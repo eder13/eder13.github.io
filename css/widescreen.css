@@ -1,0 +1,27 @@
+header #showcase-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative; }
+  header #showcase-container::after {
+    position: absolute;
+    left: 0;
+    content: "";
+    background: #222;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2; }
+
+main #projects .outer-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem; }
+  main #projects .outer-container .container {
+    max-width: 1500px;
+    display: flex;
+    grid-gap: 2rem; }
+    main #projects .outer-container .container .project {
+      width: 33.3%; }
+    main #projects .outer-container .container #project-1 img {
+      width: 100%; }

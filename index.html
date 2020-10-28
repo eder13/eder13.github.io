@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Ranftl | ranftl.dev</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Dosis"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Trispace:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- main desktop style -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- <link rel="stylesheet" href="./css/widescreen.css"> -->
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 1500px) "
+      href="./css/widescreen.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 800px)"
+      href="./css/mobile.css"
+    />
+    <noscript>
+      <style>
+        #js-notification {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        header .navbar {
+          top: 70px;
+          background-color: black;
+        }
+      </style>
+    </noscript>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./img/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./img/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./img/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./img/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./img/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./img/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./img/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./img/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./img/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./img/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./img/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./img/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="./img/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body id="top">
+    <div id="wrapper">
+      <div id="js-notification">
+        <p>
+          <i class="fas fa-info-circle"></i>
+          <small
+            >This is site is powered by JavaScript. Please enable JavaScript in
+            your settings to use this site properly.
+          </small>
+        </p>
+      </div>
+      <header id="main-header">
+        <section id="navbar" class="navbar">
+          <div class="logo margin-1x">
+            <div class="actual-logo">
+              <a href="./index.html">
+                <img
+                  src="./img/logo.png"
+                  width="100%"
+                  height="100%"
+                  title="ranftl logo"
+                  alt="logo"
+                />
+              </a>
+            </div>
+            <!-- For Mobile -->
+            <input type="checkbox" onclick="menuToggler()" id="toggler" />
+            <div class="hamburger">
+              <div></div>
+            </div>
+          </div>
+
+          <nav id="navbar-nav" class="nav nav-hide">
+            <ul id="top-menu" class="margin-1x">
+              <li>
+                <a id="ho" class="active" href="#top">HOME</a>
+                <!-- 
+                  NOTE: There needs to be an empty '#' href. This is for the active 
+                  scroll mark JQuery Script to mark top (HOME); onclick="false" 
+                  prevents undefined behavior with '#' in URL.
+                -->
+                <a class="active" href="#" onclick="return false"></a>
+              </li>
+              <li>
+                <a id="ab" href="#about">ABOUT</a>
+              </li>
+              <li>
+                <a id="pro" href="#projects">PROJECTS</a>
+              </li>
+              <li>
+                <a id="co" href="#contact">CONTACT</a>
+              </li>
+              <li>
+                <a href="./content/blog.html" id="prevent">BLOG</a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+        <script type="text/javascript">
+          document.getElementById("prevent").addEventListener("click", (e) => {
+            e.preventDefault();
+          });
+        </script>
+        <!-- Hamburger Toggler -->
+        <script type="text/javascript">
+          function menuToggler() {
+            const checkBox = document.getElementById("toggler");
+            const nav = document.getElementById("navbar-nav");
+
+            const navbar = document.getElementById("navbar");
+
+            if (checkBox.checked) {
+              nav.classList.remove("nav-hide");
+              nav.classList.add("nav-show");
+
+              navbar.classList.add("navbar-fold-animation");
+
+              // if a nav was selected, close the nav menu
+              document
+                .getElementById("top-menu")
+                .addEventListener("click", (e) => {
+                  nav.classList.remove("nav-show");
+                  nav.classList.add("nav-hide");
+                  navbar.classList.remove("navbar-fold-animation");
+                  checkBox.checked = false;
+                });
+            } else {
+              nav.classList.remove("nav-show");
+              nav.classList.add("nav-hide");
+
+              navbar.classList.remove("navbar-fold-animation");
+            }
+          }
+        </script>
+        <!-- Navbar Remove Transparency Effect on Scroll -->
+        <script>
+          document.addEventListener("DOMContentLoaded", navbarEffects);
+
+          function navbarEffects() {
+            const navbar = document.getElementById("navbar");
+            const navs = document.querySelectorAll("#navbar-nav ul li");
+
+            window.onscroll = function () {
+              if (window.pageYOffset > 10) {
+                navbar.classList.add("navbar-change-background");
+              } else {
+                navbar.classList.remove("navbar-change-background");
+              }
+            };
+          }
+        </script>
+        <div id="showcase-container">
+          <section class="showcase">
+            <div class="container">
+              <div>
+                <h1>Hi! My name is Simon.</h1>
+                <p>
+                  I am an evolving
+                  <span
+                    class="txt"
+                    data-wait="1000"
+                    data-words='["Teacher.", "Web Developer.", "Software Engineer."]'
+                  >
+                  </span>
+                  <script
+                    type="text/javascript"
+                    src="./js/typewriter.js"
+                  ></script>
+                </p>
+              </div>
+              <a id="about-btn" class="down-arrow" href="#about"
+                ><i class="fas fa-chevron-circle-down fa-3x"></i
+              ></a>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <main>
+        <section id="about" class="padding-bottom-3">
+          <div class="container margin-2x">
+            <div>
+              <h1 class="">About <span id="flash">Me</span></h1>
+            </div>
+
+            <div>
+              <p>
+                My name is Simon Ranftl and I am an ongoing computer science and
+                history teacher for secondary schools from Graz, Austria.
+                Besides teaching, I have a big passion for software development
+                and creating stuff.
+              </p>
+            </div>
+            <div>
+              <p>
+                Until recently, C/C++ was my go-to-language, with a little bit
+                of Java. After a web engineering course at university I've
+                become interested in Web Development, especially in
+                client-side-programming and a little bit of server-side
+                programming.
+              </p>
+            </div>
+            <div>
+              <p>
+                Additionally, I am a huge retro games fan! I grew up with my
+                <a href="https://mranftl.com" target="_blank">brother's</a> SNES
+                and fell in love with the Super Mario and Legend of Zelda
+                franchise. I still like playing some Super Mario World or A Link
+                to the Past even to this day. I guess that's also why I am so
+                nostalgic about modern indie games.
+              </p>
+            </div>
+          </div>
+        </section>
+        <script type="text/javascript">
+          document.getElementById("about-btn").addEventListener("click", () => {
+            const flash = document.getElementById("flash");
+            flash.className = "flash-light";
+            setTimeout(() => {
+              flash.className = "flash-light-standard";
+            }, 1000);
+          });
+        </script>
+        <section class="padding-2y" id="projects">
+          <h1 class="padding-1y">Projects</h1>
+
+          <p class="small-text-aligned-center padding-05y">powered by</p>
+          <div class="tech-logos">
+            <i
+              style="color: rgb(228, 77, 38)"
+              class="fab fa-html5 fa-2x first"
+            ></i>
+            <i
+              style="color: rgb(206, 103, 154)"
+              class="fab fa-sass fa-2x second"
+            ></i>
+            <i
+              style="color: black; background-color: transparent"
+              class="fab fa-js-square fa-2x third"
+            ></i>
+            <!-- TODO: soon :) -->
+            <!-- <i
+              style="color: rgb(97, 218, 251)"
+              class="fab fa-react fa-2x fourth"
+            ></i> -->
+            <i
+              style="color: rgb(104, 189, 69)"
+              class="fas fa-leaf fa-2x fifth"
+            ></i>
+            <i
+              style="color: rgb(90, 131, 156)"
+              class="fas fa-database fa-2x sixth"
+            ></i>
+          </div>
+
+          <!-- TODO: Add Projects as Grid Layouts -->
+          <div class="outer-container">
+            <div class="container">
+              
+              <div class="project" id="project-1">
+                <h4 class="padding-bottom-1">Web-App: Vocabulary Trainer</h4>
+                <p class="padding-bottom-1">
+                  A Web application build with Java Spring Boot, MySQL and Thymeleaf. The project was created as part of a <a target="_blank" href="https://online.tugraz.at/tug_online/pl/ui/$ctx;design=pl;lang=de;profile=STAFF/wbLv.wbShowLVDetail?pStpSpNr=227768">course</a> at university with seven collegues. 
+                  You can get the source code on <a href="https://github.com/sw20-tug/ASD-Morning-4" target="_blank">GitHub</a>.  
+                </p>
+                
+                <img src="./img/vocab.png" width="100%">
+                
+              </div>
+
+              <div class="project" id="project-2">
+                <h4 class="padding-bottom-1">[Tut] Simple Snake in JavaScript</h4>
+                <p class="padding-bottom-1">
+                  A simple Snake game I have written in JS/CSS/HTML for a <a href="content/snake-tut/index.html">tutorial series</a>. If you are interested in making your own browser games give this
+                  a shot! I think it is quite easy to understand.
+                </p>
+  
+                <table style="background-color: #E7E7E7; color: black; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; border: 3px inset silver; margin: auto;">
+                  <tr>
+                    <td class="padding-top-05" width="50%" height="175px">
+                     
+                        <img style="max-width: 275px;" src="img/snake.gif" width="100%" height="100%"/>
+                      
+                    </td>
+                    <td width="50%" height="175px" style="border-left: 1px inset silver;padding-left: 10px; font-size: 0.8rem">
+                      <strong>[Tut] Snake in JavaScript</strong><br>
+                      by <a target="_blank" href="https://eder13.itch.io">eder13</a> <br>
+                      <small>An introduction to game dev in JS.</small>
+                      <p class="padding-top-3">
+                        <form action="content/snake_game/snake.html">
+                          <input type="submit" class="button" value="Play the Game">
+                        </form>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="project" id="project-3">
+                <h4 class="padding-bottom-1">History Platform for Teaching Materials</h4>
+                <p class="padding-bottom-1">
+                  A platform where users can upload/download history teaching materials. 
+                  Technologies: 
+                  <ul class="margin-2x">
+                    <li>Spring Boot</li>
+                    <li>OAuth2</li>
+                    <li>AWS S3</li>
+                    <li>MySQL</li>
+                    <li>REST API</li>
+                    <li>Material CSS</li>
+                  </ul> 
+                  <br>
+                  If there is a demo available, this info will be updated.
+                  <br><br>
+                  <i style="color: #333" class="fas fa-spinner"></i> In progress. 
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </section>
+        <section id="contact" class="padding-3y padding-bottom-8">
+          <form class="padding-1y" action="#">
+            <h1>Contact Me</h1>
+
+            <div class="padding-05y">
+              <label for="forename">Forename:</label>
+              <input id="forename" class="full-width" type="text" />
+            </div>
+
+            <div class="padding-05y">
+              <label for="surname">Surname:</label>
+              <input id="surname" class="full-width" type="text" />
+            </div>
+
+            <div class="padding-05y">
+              <label for="mail">E-Mail:</label>
+              <input id="mail" class="full-width" type="email" />
+            </div>
+
+            <div class="padding-05y">
+              <label for="area">Message: </label>
+              <textarea
+                class="full-width"
+                name="area"
+                id="area"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="padding-1y">
+              <input type="submit" class="full-width" value="Submit" />
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+    <div class="footer-push"></div>
+    <footer>
+      <a href="content/legal.html">LEGAL</a>
+
+      <div>
+        <!-- <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a> -->
+        <a href="https://www.instagram.com/simon_ranftl/" target="_blank"
+          ><i class="fab fa-instagram-square fa-2x"></i
+        ></a>
+        <!-- <a href="#"><i class="fab fa-linkedin fa-2x"></i></a> -->
+        <a href="https://github.com/eder13" target="_blank"
+          ><i class="fab fa-github-square fa-2x"></i
+        ></a>
+      </div>
+    </footer>
+
+    <!-- Navigation on Page Scroll (JQuery) -->
+    <!-- Inspired by: https://stackoverflow.com/questions/9979827/change-active-menu-item-on-page-scroll -->
+    <!-- TODO: Remove JQuery Dependency -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      // Cache selectors
+      var lastId,
+        topMenu = $("#top-menu"),
+        topMenuHeight = topMenu.outerHeight() + 170,
+        // All list items
+        menuItems = $("nav ul li a:not(:last)"); // last is blog on external site
+
+      // Anchors corresponding to menu items
+      var scrollItems = menuItems.map(function () {
+        var id = $(this).attr("href");
+        console.log(id);
+        try {
+          var item = $(id);
+          if (item.length) {
+            return item;
+          }
+        } catch (e) {
+          // catches '#' in href
+        }
+      });
+
+      // Bind to scroll
+      $(window).scroll(function () {
+        // Get container scroll position
+        var fromTop = $(this).scrollTop() + topMenuHeight;
+
+        // Get id of current scroll item
+        var cur = scrollItems.map(function () {
+          if ($(this).offset().top < fromTop) {
+            return this;
+          }
+        });
+        // Get the id of the current element
+        cur = cur[cur.length - 1];
+        var id = cur && cur.length ? cur[0].id : "";
+
+        if (lastId !== id) {
+          lastId = id;
+          menuItems.removeClass("active");
+          menuItems.filter("[href='#" + id + "']").addClass("active");
+        }
+      });
+    </script>
+    <!-- <br><br><br><br> -->
+  </body>
+</html>

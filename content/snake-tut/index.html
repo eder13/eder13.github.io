@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="./content/logo.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Snake in JS | ranftl.dev</title>
+    <link rel="stylesheet" type="text/css" href="./content/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="./content/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./content/style.css">
+</head>
+
+<body data-ng-controller="editorCtrl" class="ng-scope ng-pageslide-body-closed">
+
+
+<table>
+<tr><td >
+    <div id="preview" sd-model-to-html="text" class="ng-isolate-scope"><div ng-bind-html="trustedHtml" class="ng-binding">
+
+        <a href="./../../index.html" target="blank"><img style="position: absolute; top: 40px; left: 40px; width: 12%" src="./content/banner.png"/></a>
+        <h3 align="center">How to make Snake in JavaScript using &lt;canvas&gt; in 2019 <br><small>(with pictures and source code)</small></h3>
+        <br>
+        <p align="center">
+            <img src="./content/result_tut_snake.gif">
+        </p>
+        <br>
+        <h4>Table of Contents</h4>
+        <ol>
+            <li>
+                <a id="chapter-1-setting-up-the-source-file_a" href="#chapter-1-setting-up-the-source-file">Chapter 1: Setting up the source file</a>
+            </li>
+            <li>
+                
+                <a id="chapter-2-a-possible-structure-of-a-game-in-javascript_a" href="#chapter-2-a-possible-structure-of-a-game-in-javascript">Chapter 2: A possible structure of a game in JavaScript</a>
+                <ol type="I">
+            
+                <li>
+                    <a id="chapter-2-1-the-game-loop_a" href="#chapter-2-1-the-game-loop">Chapter 2.1: The Game Loop</a>
+                </li>
+
+                <li>
+                    <a id="chapter-2-2-event-listener-moving-the-snake-with-your-keyboards-arrow-keys_a" href="#chapter-2-2-event-listener-moving-the-snake-with-your-keyboards-arrow-keys">Chapter 2.2: Event Listener: Moving the snake with your keyboards' arrow keys</a>
+                </li>
+
+                <li>
+                    <a id="chapter-2-3-the-game-logic_a" href="#chapter-2-3-the-game-logic">Chapter 2.3: The Game Logic</a>
+                </li>
+
+                <li>
+                    <a id="chapter-2-4-final-touches_a" href="#chapter-2-4-final-touches">Chapter 2.4: Final touches</a>
+
+                    <ol ol type="a">
+                    <li>
+                        <a id="chapter-2-4-1-limiting-the-snakes-length_a" href="#chapter-2-4-1-limiting-the-snakes-length">Chapter 2.4.1: Limiting the snakes length</a>
+                    </li>
+                    <li>
+                        <a id="chapter-2-4-2-spawning-random-red-apples_a" href="#chapter-2-4-2-spawning-random-red-apples">Chapter 2.4.2: Spawning random red apples</a>
+                    </li>
+                    <li>
+                        <a id="chapter-2-4-3-collision-detection_a" href="#chapter-2-4-3-collision-detection">Chapter 2.4.3: Collision Detection</a>
+                    </li>
+                    </ol>
+                </li>
+                </ol>
+            </li>
+
+            <li>
+                <a id="chapter-3-conclusion_a" href="#chapter-3-conclusion">Chapter 3: Conclusion and important Notes</a>
+            </li>
+            <li>
+                <a id="chapter-4-source-code_a" href="#chapter-4-source-code">Chapter 4: Source Code</a>
+            </li>
+            <li>
+                <a id="chapter-5-bug-report_a" href="#chapter-5-bug-report">Chapter 5: Bug Report</a>
+            </li>
+        
+        </ol>
+        <a id="chapter-6-footnote_a" href="#chapter-6-footnote">Footnotes</a>
+
+        <hr>
+        <p><b>This code was tested on Google Chrome but it should (usually) also run on other browsers.</b></p>
+        <p>Hey folks! This is a short tutorial how a simple version of Snake can be made
+        in pure JavaScript. We will discuss in detail, how a game is structured in JavaScript and we will use
+        the strong &lt;canvas&gt;-tag, to create a "game field" and the game itself. This project was made for my internship as a 
+        teacher at HTL Fürstenfeld, since I promised my students that I will show them, how we can make games in Javascript. 
+        However, we had insufficient time. This is why I decided to post a tutorial online step-by-step.
+        Rules for this version of Snake:</p>
+        <ul>
+        <li>We start with a green snake, that has by default four blocks (length) </li>
+        <li>The snake can be controlled using the arrow keys on your computer (Desktop only)</li>
+        <li>We have to implement a red apple, that spawns randomly in our game field</li>
+        <li>When the snake eats an apple, it gets bigger by one block</li>
+        <li>The game is lost when the players' snake "eats" itself or hits the edges</li>
+        </ul>
+        <p>All you need to follow this tutorial is some basic understanding of JavaScript and an editor of your 
+        choice. Alright, then let's start!</p>
+        <a id="chapter-1-setting-up-the-source-file" href="#chapter-1-setting-up-the-source-file_a"><h4>Chapter 1: Setting up the source file</h4></a>
+        <p>Firstly, we need to setup our programming environment. All you need to do is to create an empty file named <code>snake.html</code>.
+        After you have created that, fill it: </p>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Snake in JS&lt;/title&gt;
+        &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt; 
+    &lt;/head&gt;
+
+    &lt;body style="background-color: black; color: white;" onload="gameLoop()"&gt;
+
+        &lt;h1&gt;Simple Snake in JS&lt;/h1&gt;
+        &lt;p&gt;Use your arrow keys &amp;larr; &amp;rarr; &amp;uarr; &amp;darr; to control.&lt;/p&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>I guess this is all self explainatory, just a simple html file with the background set to black, the font-colors set to white and the whole page is displayed in the middle. It is also declared, which script-function the page must "open" after loading the website (gameLoop()) - this is the starting point of our game later. Then there is a small heading with the title "Snake" and a small description, how you can
+        control the game.</p>
+        <p>Next, we have to setup the game field. Here, we can use the &lt;canvas&gt;-element to generate a game field in html, that we can later work with in JavaScript. Just add the following line after the description (after closing paragraph tag):</p>
+        <pre><code class="html language-html">&lt;canvas id="game" width="500" height="500" style="border: 1px solid white;"&gt;&lt;/canvas&gt;</code></pre>
+        <p>This will create a 500x500 rectangle with the id-name "game", that will be our game field. The border-declaration marks the end of the "game field", so we can see how big our game field actually is. </p>
+        <p>After that we will add the actually script, that has all the game logic. We put the script after the canvas tag. We will write the script directly in html but if you prefer to bin the script, you can do so (just simply add <code>src="myscript.js"</code>).</p>
+        <pre><code class="html language-html">&lt;script type="text/javascript"&gt;
+    
+    // variable declarations
+    
+    function gameLoop()
+    {
+        // our code
+    }
+    
+&lt;/script&gt;</code></pre>
+        <p>The <code>gameLoop()</code> will be the first function that will be called when the page is loaded. 
+        Alright, we are done with chapter one, now "real" programming starts.
+        Till now, your result should look like this:</p>
+        <p align="center">
+        <img src="./content/0.png">
+        </p>
+        <a href="#chapter-2-a-possible-structure-of-a-game-in-javascript_a" id="chapter-2-a-possible-structure-of-a-game-in-javascript"><h4>Chapter 2: A possible structure of a game in JavaScript</h4></a>
+        <p>Every game has some sort of loop, since a game runs "endless" till it is closed (or lost, or paused etc.).
+        Every time a loop is passed, the image (<b>frame</b>) will be update (<b>rendered</b>) - this happens in some amount of time, called Frames per Seconds (FPS). During the runtime (i.e. <b>gameLoop()</b> runs), we expect input from the user (like pressing a key) - this is called an <b>event</b>. When the user e.g. moves something, the image must be updated since the position of an object has changed.</p>
+        <p>That is basically the theory behind game loops. This means we nee to implement the following:</p>
+        <ol>
+        <li>A game loop that always loops, till the game is lost/over (<b>The Game Loop</b>)</li>
+        <li>Some sort of function, that "listens" when a button is pressed (<b>The Event Listener</b>)</li>
+        <li>A function, that updates the new position of the object, after a button was pressed or something happened. E.g. an apple was eaten or the moving direction of the snake has changed (<b>Game Logic</b>)</li>
+        </ol>
+        <p><b>Let's discuss 1. (game loop) first.</b> </p>
+        <a href="#chapter-2-1-the-game-loop_a" id="chapter-2-1-the-game-loop"><h5>Chapter 2.1: The Game Loop</h5></a>
+        <p>Change your &lt;script&gt;'s-content to this: </p>
+        <pre><code class="html language-html">&lt;script type="text/javascript"&gt;   
+    // variable declarations
+    let counter = 0;
+
+    function gameLoop()
+    {   
+        counter++;
+        alert("Hello Loop: " + counter);
+    }
+&lt;/script&gt;</code></pre>
+        <p><b>A note to my students</b>: We simply declared a variable called <code>counter</code> initialized with the value 0 using the keyword <code>let</code> which is better than <code>var</code> to declare integers since with <code>var</code> we also need to change the variable to type integer using <code>parseInt()</code> - the let keyword does that for us without declaring <code>parseInt()</code> explicitely. Using <code>let</code> it declares x as "let x be 0".</p>
+        <p>Now run the website - what's the problem? Right, the loop only runs one time instead of running infinite. To fix this, change your &lt;script&gt;'s-content to the following. After that, refresh the website and see what happens:</p>
+        <pre><code class="html language-html">&lt;script type="text/javascript"&gt;
+        
+    // variable declarations
+    var id;
+    let counter = 0;
+    let canvas = document.getElementById('game'); // get the canvas element
+    let context = canvas.getContext('2d'); // "type of game" (2D or 3D)
+
+    function gameLoop()
+    {   
+        id = requestAnimationFrame(gameLoop);
+        counter++;
+        alert("Hello Loop: " + counter);
+    }
+        
+&lt;/script&gt;</code></pre>
+        <p>As you can see, the loop now runs infinite and tells you, how many times it looped. Let's analyze the code we wrote:</p>
+        <ul>
+        <li>we declared a variable named <code>canvas</code> that stores our &lt;canvas&gt;-tag html properties (e.g. width). We access to those
+        information using the <code>getElementById()</code> method.</li>
+        <li>from that new <code>canvas</code> variable, we declare a <code>context</code> variable, that tells the web page which type of game we develop.</li>
+        <li>the <code>requestAnimationFrame()</code> method calls recursively our <code>gameLoop()</code> and returns an id (which is needed to exit the loop - more on that later). This part is a little difficult to understand, let's just say using this line of code the function <code>gameLoop()</code> will be called over and over again, after it finished its current turn. </li>
+        <li>Note: This three tasks are typical for JavaScript game development and you find these declarations in (nearly) every html/javascript games' source code.</li>
+        </ul>
+        <p>Until now, there is no possibility to quit the loop. To implement this, we ask the user everytime to input something (doesn't matter what he writes, just a random letter/string from the keyboard). If the user typed nothing (e.g. left the <code>prompt()</code> empty and just hit "OK") we stop the loop.</p>
+        <p>Add the following after the <code>//variable declarations</code>:</p>
+        <pre><code class="javascript language-javascript">var inp = " "; // some misc character</code></pre>
+        <p>And the following after <code>alert</code>:</p>
+        <pre><code class="javascript language-javascript">inp = prompt("Input: ", "");
+if(inp == "")
+{
+    cancelAnimationFrame(id);
+}       </code></pre>
+        <p>Now if you run the code, the website always first tells you the current loop and asks then for an input. If you type nothing as input (e.g. just hit "OK"), it stops calling gameLoop() recursively and therefore <b>cancels</b> the loop.  </p>
+        <p align="center">
+        <img src="./content/cancel_animation_frame.gif">
+        </p>
+        <p>We can transfer this process to our actual game: The "<code>alert</code>-part" is the "player" (=snake) and the "<code>prompt</code>-part" is the "event listener" (=keyboard input).
+        After that we also need something like an <code>updateGame()</code>-function that updates the new positions, after an event occured.
+        Now, let's implement the "<code>alert</code>-part" - the snake.</p>
+        <p><b>Implementing the Snake</b></p>
+        <p>To draw the snake, we need information:</p>
+        <ol>
+        <li>The starting position of the snake (x and y)</li>
+        <li>the actual snake</li>
+        <li>the moving position (left, right, up, down)</li>
+        <li>the current length of the snake, starting with 4 blocks</li>
+        </ol>
+        <p>The &lt;canvas&gt; element made a 500x500 game field. The "content" of the &lt;canvas&gt;, where the actually game is "drawed", can be accessed. Every Pixel in the 
+        500x500 canvas has a x and y value - like in a coordinate system. The coordinate system looks like this:</p>
+        <p align="center">
+        <img src="./content/unscaled_grid.png">
+        </p>
+        <p><b>Little task 1: </b>What are the coordinates of this <b>yellow</b> pixel?<a id="foot1" href="#footnote1"><sup>1</sup></a></p>
+        <p>As you can see the "first pixel" is placed in the top left corner with (coordinates) 0|0 (x = 0, y = 0) and the "last pixel" is placed in the bottomm right corner width-1|height-1 which is 499|499 (x = 499, y = 499) in our case.
+        So we can actually pick any number for x/y which is between 0 and 499 for the starting position of the snake. Let's say we set the snake to x = 100 and y = 140. 
+        Add the following unter <code>//variable declarations</code>:</p>
+        <pre><code class="javascript language-javascript">let x = 100;
+let y = 140;</code></pre>
+        <p>After that, we need a variable that "stores" the snake. What I mean by that is that the snake can be represented as a green pixel in the game field.
+        We need some "sort of list", where we can store all x and y values for each pixel (=block of snake) that should be colored green, whick represents the snake.
+        Also, this values change after every loop-run, so the "sort of list" will be changed every loop. Furthermore, this "sort of list" has to be dynamic. What I mean by that is, that
+        a new entry can be easily added, since the snake gets bigger after an apple has been eaten. 
+        In JavaScript we can use dynamic arrays for that. For each pixel, we store first the x-value, then the y-value.</p>
+        <p><b>Note:</b> If you don't know how arrays work, check this short <a target="blank" href="https://www.geeksforgeeks.org/arrays-in-javascript/">article</a> and make some examples - it is really not that hard.</p>
+        <p>To declare a dynamic array, add the following under the <code>x</code> and <code>y</code> declaration in the variable declarations sections:</p>
+        <pre><code class="javascript language-javascript">let snake = [x, y];</code></pre>
+        <p>What happenend here? As said previously, the values (x and y) of the first pixel is stored on the beginning of the array. Now if we wanna draw the pixel (make it green), we just
+        need to make alle pixels with coordinates x|y green. <code>snake[0]</code> (=x0) and <code>snake[1]</code> (=y0) represent the "head" of the snake.</p>
+        <p>In our function <code>gameLoop</code> we add another function (sub program), that always should calculate the new position of the pixels from the array <code>snake[]</code>
+        so that Code looks like this until now (<b>Note:</b> also remove <code>alert("Hello Loop: " + counter);</code>, <code>let counter = 0;</code> and <code>var inp = " ";</code> from your code since we don't need it anymore):</p>
+        <pre><code class="html language-html">&lt;script type="text/javascript"&gt;
+
+    // variable declarations
+    let canvas = document.getElementById('game');
+    let context = canvas.getContext('2d');
+    let x = 100;
+    let y = 140;
+    let snake = [x, y];
+
+    function gameLoop()
+    {   
+        id = requestAnimationFrame(gameLoop);
+
+        updateSnakePositionAndLength();
+    }
+
+    function updateSnakePositionAndLength()
+    {
+        // give the "latest value" to x and y = the "head of the snake"
+        x = snake[0]; // x0
+        y = snake[1]; // y0
+    }
+&lt;/script&gt;</code></pre>
+        <p>Next up, we need to actually draw the green pixel, we just implement another function named <code>renderEverything()</code> that draws our
+        pixels with coordinates x and y from snake[] array. Add the following code (<b>Note:</b> also remove <code>alert("Hello Loop: " + counter);</code>, <code>let counter = 0</code> and <code>var in = " "</code> from your code since we don't need it anymore):</p>
+        <pre><code class="javascript language-javascript">// Add this under `updateSnakePositionAndLength();` in `gameLoop()`:
+
+renderEverything();
+
+.
+.
+.
+
+// Add this codeblock under the function `updateSnakePositionAndLength`
+// draw snake
+context.fillStyle = 'green';
+
+for(let i = 0; i &lt; snake.length; i = i + 2)
+{
+    context.fillRect(snake[i], snake[i+1], 20, 20);
+}</code></pre>
+        <p>This should be the result:</p>
+        <p align="center">
+        <img src="./content/1.png">
+        </p>
+        <p>You might ask yourself why we need this <code>for</code>-loop. We need it later, when we want to draw all blocks of the snake. Remember they begin with four blocks and can then get infinite bigger, till the game is lost. The loop is pretty simple. As said, we store both x and y values from the snake, what has to be drawn. Since there can be more then one entry, we declared a loop, that prints every pixel to our game field. the first position is always <code>i</code> (x) and the next one is <code>i+1</code> (y). Then we move to the next x/y entry - the next x-entry can be accessed by <code>i+2</code>. It prints all x/y-values, that are stored in the array (<code>snake.length</code>).</p>
+        <p>Congratulations, you drawed your first (small) pixel to the game field! Now let's analyze how that's done. First, using our <code>context</code> variable, we set the color, wanna draw. In general, the variable <code>context</code> is used to "draw stuff" on the screen. Next up we say, we wanna fill up an rectangle. This method is structured like so: <code>fillRect(&lt;coordinates x&gt;, &lt;coordinates y&gt;, &lt;width size&gt;, &lt;height size&gt;)</code>. First, the methods gets the x and y position, where it has to be drawn. Secondly, since we only want to draw a 1x1 pixel, we set the both witdh and height to 1. That's all the magic behind it.</p>
+        <p>Yeah I know what you mean: "This is by far too small". I agree, it is too small, this is why we "scale up" the whole game fiel by a factor of 20. We can achieve this by changing the width and height to 20:</p>
+        <pre><code class="javascript language-javascript">context.fillRect(snake[i], snake[i+1], 20, 20);</code></pre>
+        <p>Result:</p>
+        <p align="center">
+        <img src="./content/2.png">
+        </p>
+        <p>With this change, we say that "one pixel" has now a size of 20x20 instead of the (standard) one by one. This graphic shows our "new coordinatesystem":</p>
+        <p align="center">
+        <img src="./content/scaled_grid.png">
+        </p>
+        <p><b>Another little task 2: </b>What are now the coordinates of this <b>yellow</b> pixel?<a id="foot2" href="#footnote2"> <sup>2</sup></a></p>
+        <p>Until now, this should be your content of <code>index.html</code> - compare it with your result if everything is correct:</p>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Snake in JS&lt;/title&gt;
+        &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt; 
+    &lt;/head&gt;
+
+    &lt;body style="background-color: black; color: white; text-align: center;" 
+    onload="gameLoop()"&gt;
+
+        &lt;h1&gt;Simple Snake in JS&lt;/h1&gt;
+        &lt;p&gt;Use your arrow keys &amp;larr; &amp;rarr; &amp;uarr; &amp;darr; to control.&lt;/p&gt;
+        &lt;canvas id="game" width="500" height="500" style="border: 1px solid 
+        white;"&gt;&lt;/canvas&gt;
+        &lt;script type="text/javascript"&gt;
+
+            // variable declarations
+            let canvas = document.getElementById('game');
+            let context = canvas.getContext('2d');
+            var id;
+            let x = 100;
+            let y = 140;
+            let snake = [x, y];
+
+            function gameLoop()
+            {   
+                id = requestAnimationFrame(gameLoop);
+
+                updateSnakePositionAndLength();
+
+                renderEverything();
+            }
+
+            function updateSnakePositionAndLength()
+            {
+                // x and y = the "head of the snake"
+                x = snake[0]; // always x0
+                y = snake[1]; // always y0
+            }
+
+            function renderEverything()
+            {
+                // draw snake
+                context.fillStyle = 'green';
+
+                for(let i = 0; i &lt; snake.length; i = i + 2)
+                {
+                    context.fillRect(snake[i], snake[i+1], 20, 20);
+                }
+            }
+
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>Alright, now we have a drawed snake! I know it is just literally a pixel, which we can not even move, and a snake is usually represented bigger than one pixel but let's 
+        keep it like that for now and implement the next step "Movement": <b>2. Event Listener.</b></p>
+        <a href="#chapter-2-2-event-listener-moving-the-snake-with-your-keyboards-arrow-keys_a" id="chapter-2-2-event-listener-moving-the-snake-with-your-keyboards-arrow-keys"><h5>Chapter 2.2: Event Listener: Moving the snake with your keyboards' arrow keys</h5></a>
+        <p>First of, we know that the snake can be moved into four directions: <code>left, right, up, down</code> - so let's implements four variables, that store the current moving position.
+        Add the following under your declarations:</p>
+        <pre><code class="javascript language-javascript">var left = false;
+var right = true;
+var up = false;
+var down = false;</code></pre>
+        <p>We can check the direction by making a simple if (or switch case), in which direction the snake is currently moving - then we update the pixels.
+        In the beginning, before the user presses a button, the snake's position is set to right, this is why right is set to <code>true</code> and the rest is set to <code>false</code>.
+        This makes sense, since if would press nothing on our keyboard later, the snake would stand still.</p>
+        <p>Right, next up we add the actual event listener. Thankfully, JavaScript already has some build-in functions to determine if a key is pressed. Add the following
+        lines of code under your last declared function as a "standalone-code":</p>
+        <pre><code class="javascript language-javascript">document.addEventListener('keydown', function(event) {
+    // left arrow key
+    if (event.which === 37) {
+        alert("left arrow key was pressed!");   
+    }
+    // up arrow key
+    else if (event.which === 38) {
+        alert("up arrow key was pressed!");
+    }
+    // right arrow key
+    else if (event.which === 39) {
+        alert("right arrow key was pressed!");
+    }
+    // down arrow key
+    else if (event.which === 40) {
+        alert("down arrow key was pressed!");
+    }
+});</code></pre>
+        <p>Now if you run this code, everytime you will get a message, which arrow key you have pressed. How does that work?
+        In JavaScript we can create something like an "eventListener"-function. This function can be declared using <code>document.addEventListener('keydown', function(event) { //stuff });</code>.
+        It asks first, which type of "pressing" should be analyzed (e.g. keydown -&gt; if a key was pressed; or keyup -&gt; if a key was released) - then we save this in some sort of "self-generated" function called <code>event</code>. After that we can ask using the <code>.which</code>-property, if a certain key was pressed. Keys are declared in certain numbers. E.g. the arrow-key "down" is represented by the digit-code <code>40</code>. If you are interested in other key codes (e.g. what the code for "shift" means) have a look to this <a target="blank" href="https://keycode.info/">website</a>.</p>
+        <p>Alright, obviously are the <code>alert</code>s not very helpful. Instead of alerting everytime a button is pressed we change the variables <code>left, right, up, down</code> depending which button was pressed - so change the events-function to this:</p>
+        <pre><code class="javascript language-javascript">document.addEventListener('keydown', function(event) {
+    // left arrow key
+    if (event.which === 37) {
+        left = true;
+        right = false;
+        down = false;
+        up = false;
+    }
+    // up arrow key
+    else if (event.which === 38) {
+        left = false;
+        right = false;
+        down = false;
+        up = true;
+    }
+    // right arrow key
+    else if (event.which === 39) {
+        left = false;
+        right = true;
+        down = false;
+        up = false;
+    }
+    // down arrow key
+    else if (event.which === 40) {
+        left = false;
+        right = false;
+        down = true;
+        up = false;
+    }
+});</code></pre>
+        <p>Nice, we finally have an event listener as a prototype! Next up need to implement the actually "movement" of the snake - till now our snake just keeps "sitting" if we press a button - let's start with <b>3. The game logic</b>. </p>
+        <a href="#chapter-2-3-the-game-logic_a" id="chapter-2-3-the-game-logic"><h5>Chapter 2.3: The Game Logic</h5></a>
+        <p>We already declared a function where we can implement the moving of the snake: <code>updateSnakePositionAndLength()</code> - change the function to the following:</p>
+        <pre><code class="javascript language-javascript">function updateSnakePositionAndLength()
+{
+    if(right == true)
+    {
+        snake.unshift(y);
+        snake.unshift(x+20);
+
+        // give the "latest value" to x and y = the "head of the snake"
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(left == true)
+    {
+        snake.unshift(y);
+        snake.unshift(x-20);
+
+        // give the "latest value" to x and y = the "head of the snake"
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(up == true)
+    {
+        snake.unshift(y-20);
+        snake.unshift(x);
+
+        // give the "latest value" to x and y = the "head of the snake"
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(down == true)
+    {
+        snake.unshift(y+20);
+        snake.unshift(x);
+
+        // give the "latest value" to x and y = the "head of the snake"
+        x = snake[0];
+        y = snake[1];
+    }
+}</code></pre>
+        <p><b>Hold on!</b> I know what you are thinking - <b>"What the hell does all this code mean?"</b> I will discuss in detail what is going on. You will see it is not that compliacted at all. But first let's test our game. Your result should look like this:</p>
+        <p align="center">
+        <img src="./content/whithout_press_button.gif">
+        </p>
+        <p>If you are fast enough, you can also change the snakes direction:</p>
+        <p align="center">
+        <img src="./content/whith_press_button.gif">
+        </p>
+        <p>First of you will notice that the game is running to fast. That is because we haven't declared a fixed frame rate yet. Snake is typically a more "slow"-game, so I would suggest we limit the framerate to 12FPS. We can achieve that with a simple modification in <code>id = requestAnimationFrame(gameLoop);</code> - Change it to the following:</p>
+        <pre><code class="javascript language-javascript">setTimeout(function() {
+            id = requestAnimationFrame(gameLoop);
+        }, 1000 / 12);</code></pre>
+        <p>This <code>setTimeout()</code> function can limit our frames per seconds to a value that we wanna like - here we fixed the framerate to 12 fps, which can be expressed with <code>1000 / 12</code>.
+        Also in <code>renderEverything()</code> change the width and height to draw from 20 to 19. This will result into a "blocky effect" with something like a black border - it just looks better.</p>
+        <pre><code class="javascript language-javascript">context.fillRect(snake[i], snake[i+1], 19, 19);</code></pre>
+        <p>Now test your code. You will see that your snake game is slowly getting shape:</p>
+        <p align="center">
+        <img src="./content/fixed_framerate_bock_effect.gif">
+        </p>
+        <p>Alright, now back to the "What the hell"-statement - how does the edited function <code>updateSnakePositionAndLength()</code> work? Now let's step through it:
+        First of, we scan in which direction the snake is moving. Remember, that we can change the direction of our snake by hitting one of the arrow keys <code>left, right, up, down</code>. So we have to check, which direction is yet set to true - this can be done with a simply <code>if/else if</code> construct (alternatively, we could also use <code>switch(case)</code>):</p>
+        <pre><code class="javascript language-javascript">function updateSnakePositionAndLength()
+{
+    if(right == true)
+    {
+        // change position to right
+    }
+
+    else if(left == true)
+    {
+        // change position to left
+    }
+
+    else if(up == true)
+    {
+        // change position to up
+    }
+
+    else if(down == true)
+    {
+        // change position to down
+    }
+}</code></pre>
+        <p>Alright, after one of those cases occured it has to update the new position of the snake - "the movement". Now how does that work? Let's look how it works, if the snake moves right (which is the default on beginning):</p>
+        <pre><code class="javascript language-javascript">if(right == true)
+{
+    snake.unshift(y);
+    snake.unshift(x+20);
+
+    // give the "latest value" to x and y = the "head of the snake"
+    x = snake[0];
+    y = snake[1];
+}</code></pre>
+        <p>Remember, at the start before the loop starts iterating, out snake is positioned at 100|140. I edited my code a little illustrate how the pixels are drawn. It now showes you, which pixels are currently drawn and in which direction the snake is currently moving (nothin special). To achieve the same, change your code as followe: </p>
+        <pre><code class="javascript language-javascript">// declare a frame counter varible under the declarations sections
+let frame = 0;</code></pre>
+        <p>Then change your complete <code>gameLoop()</code>-function to this:</p>
+        <pre><code class="javascript language-javascript">function gameLoop()
+{   
+    // initial values ("frame 0")
+    if(frame == 0)
+    {
+        console.log("Loop printing frame " + frame);
+        console.log("Starting values:");
+        console.log("x = " + x + " | y = " + y);
+        console.log("Starting direction: right");
+        console.log("\n\n");
+    }
+
+    setTimeout(function() {
+        id = requestAnimationFrame(gameLoop);
+    }, 1000 / 0.5);
+
+    updateSnakePositionAndLength();
+
+    renderEverything();
+
+    // show next rendered frame values
+    frame++;
+    console.log("Loop printing frame " + frame);
+    if(right == true)
+    {
+        console.log("Current direction: right")
+    }
+    else if(left == true)
+    {
+        console.log("Current direction: left")
+    }
+    else if(up == true)
+    {
+        console.log("Current direction: up")
+    }
+    else if(down == true)
+    {
+        console.log("Current direction: down")
+    }
+
+    for(let i = 0; i &lt; snake.length; i = i + 2)
+    {
+        console.log("x["+i+"]: " + snake[i] + "| y["+(i+1)+"]: " + 
+        snake[i+1]);
+    }
+    console.log("\n\n");
+}</code></pre>
+        <p>Again every loop iteration represents one frame. I set the FPS to 0.5, just to see better, what is changing/drawed in every loop. Then a simpple <code>if/else</code> construct tells us, in which direction the snake is currently moving. Using a <code>for</code>-loop, we print out all numbers that are stored into the <code>snake[]</code> array. Remember: Every x/y coordinate that is stored in the array, will be drawed.
+        Now let's fire up the developing tools in chrome and look for the console output:</p>
+        <p align="center">
+        <img src="./content/loop_drawing.gif">
+        </p>
+        <p>When everything is initalized, we are at "frame 0". When the iteration begins, it starts to update the blocks according to the current direction.
+        The direction in "frame 1" was right, so we have to get to the right next block. How do we get there? Right by adding +20 to our x-value ("+x"), the y-value keeps untouched.
+        And this is already happening. With the <code>.unshift()</code> method <a id="foot3" href="#footnote3"><sup>3</sup></a> we put two new entries on the beginning of the array. First comes the y-value then the x-value, which is also added by 20 since we want to go to the next pixel/block: After this action, the array looks like this: </p>
+        <pre><code class="javascript language-javascript">//          frame1    frame0
+//          x1   y1   x0   y1
+snake[] = { 120, 140, 100, 140 };</code></pre>
+        <p>You can also check that in the console:</p>
+        <p align="center">
+        <img src="./content/5_iterations.png">
+        </p>
+        <p>That's all the magic behind this. Of course we can expand this idea also with <code>left, up, down</code>, we just have to sub/add differently:</p>
+        <ul>
+        <li><code>left</code>: means "-x", which is why we wrote <code>x-20</code>. <code>y</code> stays the same.</li>
+        <li><code>up</code>: means "-y", which is why we wrote <code>y-20</code>. <code>x</code> stays the same.</li>
+        <li><code>down</code>: means "+y", which is why we wrote <code>y+20</code>. <code>x</code> stays the same.</li>
+        </ul>
+        <p>If you understand this principle then you have won since this "concept" can be found on a lot of (2D) games. Maybe implemented differently, but still found similar.
+        Alright, the basis is set congratulations! Now it's time for the fine tuning - this involves:</p>
+        <ul>
+        <li>Defining a <code>max_length_snake</code>-variable which gets bigger, when the snake "ate" an apple.</li>
+        <li>Spawning random red apples</li>
+        <li>Collision detection (eating red apples and if the snake touches the edges or if the snake "eats" itself).</li>
+        </ul>
+        <p>We will implement these in 2.4.</p>
+        <p><b>By the way</b>, you can delete change your code back to normal by setting the framerate back to 12 and removing the additional code from the previous examples since it was only for demonstrative purposes. 
+        You can compare your result with mine below: </p>
+        <pre><code class="html language-html">&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Snake in JS&lt;/title&gt;
+        &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt; 
+    &lt;/head&gt;
+
+    &lt;body style="background-color: black; color: white; text-align: center;" 
+    onload="gameLoop()"&gt;
+
+        &lt;h1&gt;Simple Snake in JS&lt;/h1&gt;
+        &lt;p&gt;Use your arrow keys &amp;larr; &amp;rarr; &amp;uarr; &amp;darr; to control.&lt;/p&gt;
+        &lt;canvas id="game" width="500" height="500" style="border: 1px solid 
+        white;"&gt;&lt;/canvas&gt;
+        &lt;script type="text/javascript"&gt;
+
+            // variable declarations
+            let canvas = document.getElementById('game');
+            let context = canvas.getContext('2d');
+            var id;
+            let x = 100;
+            let y = 140;
+            let snake = [x, y];
+            var left = false;
+            var right = true;
+            var up = false;
+            var down = false;
+
+            function gameLoop()
+            {   
+                setTimeout(function() {
+                    id = requestAnimationFrame(gameLoop);
+                }, 1000 / 12);
+
+                updateSnakePositionAndLength();
+
+                renderEverything();
+            }
+
+            function updateSnakePositionAndLength()
+            {
+                if(right == true)
+                {
+                    snake.unshift(y);
+                    snake.unshift(x+20);
+
+                    // give the "latest value" to x and y
+                    x = snake[0];
+                    y = snake[1];
+                }
+
+                else if(left == true)
+                {
+                    snake.unshift(y);
+                    snake.unshift(x-20);
+
+                    // give the "latest value" to x and y
+                    x = snake[0];
+                    y = snake[1];
+                }
+
+                else if(up == true)
+                {
+                    snake.unshift(y-20);
+                    snake.unshift(x);
+
+                    // give the "latest value" to x and y
+                    x = snake[0];
+                    y = snake[1];
+                }
+
+                else if(down == true)
+                {
+                    snake.unshift(y+20);
+                    snake.unshift(x);
+
+                    // give the "latest value" to x and y
+                    x = snake[0];
+                    y = snake[1];
+                }
+            }
+
+            function renderEverything()
+            {
+                // draw snake
+                context.fillStyle = 'green';
+
+                for(let i = 0; i &lt; snake.length; i = i + 2)
+                {
+                    context.fillRect(snake[i], snake[i+1], 19, 19);
+                }
+            }
+
+            document.addEventListener('keydown', function(event) {
+                // left arrow key
+                if (event.which === 37) {
+                    left = true;
+                    right = false;
+                    down = false;
+                    up = false;
+                }
+                // up arrow key
+                else if (event.which === 38) {
+                    left = false;
+                    right = false;
+                    down = false;
+                    up = true;
+                }
+                // right arrow key
+                else if (event.which === 39) {
+                    left = false;
+                    right = true;
+                    down = false;
+                    up = false;
+                }
+                // down arrow key
+                else if (event.which === 40) {
+                    left = false;
+                    right = false;
+                    down = true;
+                    up = false;
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <a href="#chapter-2-4-final-touches_a" id="chapter-2-4-final-touches"><h5>Chapter 2.4: Final touches</h5></a>
+        <a href="#chapter-2-4-1-limiting-the-snakes-length_a" id="chapter-2-4-1-limiting-the-snakes-length"><h6>Chapter 2.4.1: Limiting the snakes length</h6></a>
+        <p>Alright, let's start with the length of the snake. Till now, we always drawed every pixel that is stored in the <code>snake[]</code> array. But of course, it should only draw the current amount of allowed blocks - which is in the beginning four (in my case). So we have to implement something, that if the array length is bigger than <code>the max_length_snake</code> that it deletes the "last" value and makes that pixel back to the color of the gamefield (which is black). If you look at the structure of our gameLoop(),</p>
+        <pre><code class="javascript language-javascript">setTimeout(function() {
+            id = requestAnimationFrame(gameLoop);
+        }, 1000 / 12);
+        
+updateSnakePositionAndLength();
+
+renderEverything();</code></pre>
+        <p>it makes sense, that this "check" is made before the <code>rendering()</code> process. In fact, we can perform this action directly in the <code>updateSnakePositionAndLength()</code> function.
+        Ok, let's first declare a <code>max_length_snake</code> variable, which holds a value that indicates the length of the snake at the beginning (add this under the declarations section):</p>
+        <pre><code class="javascript language-javascript">let max_length_snake = 4; // starting length of snake</code></pre>
+        <p>If we look in the <code>updateSnakePositionAndLength()</code> function, we see this:</p>
+        <pre><code class="javascript language-javascript">function updateSnakePositionAndLength()
+{
+    if(right == true)
+    {
+        snake.unshift(y);
+        snake.unshift(x+20);
+
+        // give the "latest value" to x and y
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(left == true)
+    {
+        snake.unshift(y);
+        snake.unshift(x-20);
+
+        // give the "latest value" to x and y
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(up == true)
+    {
+        snake.unshift(y-20);
+        snake.unshift(x);
+
+        // give the "latest value" to x and y
+        x = snake[0];
+        y = snake[1];
+    }
+
+    else if(down == true)
+    {
+        snake.unshift(y+20);
+        snake.unshift(x);
+
+        // give the "latest value" to x and y
+        x = snake[0];
+        y = snake[1];
+    }
+}</code></pre>
+        <p>Under the last <code>else if</code>-condition block ("<code>else if(down == true)</code>") add the following function:</p>
+        <pre><code class="javascript language-javascript">checkMaxLength();</code></pre>
+        <p>This function will be called regardless in which direction the snake is currently moving which makes sense, since we want the snake to keep its maxlength careless of its direction.</p>
+        <p>Then we declare our new function <code>checkMaxLength()</code>:</p>
+        <pre><code class="javascript language-javascript">function checkMaxLength()
+{
+    if(snake.length / 2 &gt; max_length_snake)
+    {
+    // delete the latest entry
+    snake.pop(); // deletes y
+    snake.pop(); // deletes x
+
+    // makes the whole screen "black" - then draw again the 
+    // green things that are supposed to be here
+    context.clearRect(0, 0, canvas.width, canvas.height); 
+
+    }
+}</code></pre>
+        <p>Let's investigate this function:</p>
+        <ul>
+        <li>You might ask why I wrote <code>snake.length / 2 &gt; max_length_snake</code> - as said previously we check if the array length is bigger than <code>the max_length_snake</code>. Since our array is always 2 times bigger than the <code>max_length_snake</code> because it holds both <code>x</code> and <code>y</code> value of each pixel we have to divide <code>snake.length</code> with 2. That's why.</li>
+        <li><code>snake.pop();</code> deletes the latest value of the array. So on the first call it deletes y, than x which is "one pixel". This makes sense because in the <code>rendering()</code> function we said that every pixel (its x and y) which is in the <code>snake[]</code> array should be drawed.</li>
+        <li>Lastly, we make this strange <code>.clearRect()</code> call. It's purpose is to "delete" <b>all</b> current pixels at the game field i.e. it sets the color back to black. This is needed to actually delete the now unused pixels since they would be still drawn from the previous iterations. It really makes <b>everything black</b>, because later in the <code>rendering()</code> function the updated green pixels will be drawed anyway.</li>
+        </ul>
+        <p>Now we finally have a valid moving snake:</p>
+        <p align="center">
+        <img src="./content/snake_max_length.gif">
+        </p>
+        <p>Next up we implement the random spawning red apples.</p>
+        <a href="#chapter-2-4-2-spawning-random-red-apples_a" id="chapter-2-4-2-spawning-random-red-apples"><h6>Chapter 2.4.2: Spawning random red apples</h6></a>
+        <p>This task is quite simple: We just need to set x and y values to random values between 0 and 499. Here, we can use one of the standards <code>Math.random()</code>. We will also use <code>Math.floor()</code> to round the result, since we don't want floating numbers. First of we need two new variables (I named them <code>apple_x</code> and <code>apple_x</code>) holding the x and y values of the apple and we need a new variable called <code>apple_eaten</code> and set it to <code>true</code>. Why <code>true</code> you might ask - well it is because we tell the programm the apple was already eaten and <code>apple_x</code> and <code>apple_y</code> get new random values right at the start - this is also why <code>apple_x</code> and <code>apple_y</code> are "empty" at the start since they will get the values after the first iteration. This is just "my" method, you could also set the "starting" apple to a "fixed starting position" and set <code>apple_eaten</code> to false. But if you want that the apple spawns also at the start differently, you should/could it implemented like I did:</p>
+        <pre><code class="javascript language-javascript">let apple_x;
+let apple_y;
+var apple_eaten = true;</code></pre>
+        <p>We need the variable <code>apple_eaten</code> to check (Collission detection) if an apple was eaten later so if so we can spawn another random apple.
+        Right, next up we implement the actual "rendering" of the apple - we can add this to the already existing <code>rendering()</code> function to keep our code nice and structured:</p>
+        <pre><code class="javascript language-javascript">function renderEverything()
+{
+    // draw snake
+    context.fillStyle = 'green';
+
+    for(let i = 0; i &lt; snake.length; i = i + 2)
+    {
+        context.fillRect(snake[i], snake[i+1], 19, 19);
+    }
+
+    /* add this below to your existing function: */
+
+    // draw random apple
+    if(apple_eaten == true)
+    {   //                 end number    starting number  "block multiplier"
+        //                       |                 |               |
+        //                       -------------|    |     |---------|
+        //                                    v    v     v
+        apple_x = Math.floor((Math.random() * 25 + 0)) * 20;
+        apple_y = Math.floor((Math.random() * 25 + 0)) * 20;
+    }
+
+    apple_eaten = false;
+    context.fillStyle = 'red';
+    context.fillRect(apple_x, apple_y, 19, 19);
+}</code></pre>
+        <p>Before I go through all the details let's see the actual output:</p>
+        <p align="center">
+        <img src="./content/spaw_apple.gif">
+        </p>
+        <p>Alright, now discuss the details:</p>
+        <ul>
+        <li>First of, we ask if an apple was eaten. Since at the beginn ing <code>apple_eaten</code> is set to <code>true</code> the condition is satisfied and it will then create two random x and y for the apple. </li>
+        <li>We need both valid <code>x</code>and <code>y</code> values, this is why we need to assign both with the same.</li>
+        <li><code>Math.random()</code> outputs a number between 0 and 1 (incl. 0 but without 1). Since that is not helpful, we declare a "end" number which is adding <code>* 25</code>. You might ask, why is 25 and not 500 the "end number"? Remember, this is because we scaled up our grid by a multiplier of 20. Our grid is 500. So we have in each row 500 / 20 pixels, which is 25. That means, the latest last pixel is 25 (see the graph under "new coordinatesystem"). The <code>+0</code> could be left out, but I always declare it as an "starting number" in case i want to set the starting number to another value (e.g. 1 or 5 or 10 etc.).
+        Let's make an example to this:</li>
+        <li>Let's say <code>Math.Random()</code>returns the number 0.35839200126</li>
+        <li>This number will be multiplied by 25 - which is: 8.9598000315</li>
+        <li>since we don't want floating numbers, we use <code>Math.floor()</code> to round our value which give is the number 9</li>
+        <li>at the end we calculate 9 * 20 which is 180 and a valid "output coordinate" to our coordinate system.</li>
+        <li>At the end, we set <code>apple_eaten</code> to <code>false</code>. Why? Because we wan't only a new "spawned" apple if it was eaten (<code>apple_eaten = true</code>). Without this
+        condition a random apple would be spawned after every loop iteration.</li>
+        <li>In the end we set the color to red and fill the pixels (x and y) which the apple has. Rememer that in every iteration this will be "overrided" (same as snake).</li>
+        </ul>
+        <p>At last you might ask, why the red apple "overlays" if we drive over with out our snake. This is because we render first the snake and then the apple. E.g. we would change the order to this:</p>
+        <pre><code class="javascript language-javascript">function renderEverything()
+{
+    context.fillStyle = 'green';
+    for(let i = 0; i &lt; snake.length; i = i + 2)
+    {
+        context.fillRect(snake[i], snake[i+1], 19, 19);
+    }
+
+    if(apple_eaten == true)
+    { 
+        apple_x = Math.floor((Math.random() * 25 + 0)) * 20;
+        apple_y = Math.floor((Math.random() * 25 + 0)) * 20;
+    }
+
+    apple_eaten = false;
+    context.fillStyle = 'red';
+    context.fillRect(apple_x, apple_y, 19, 19);
+}</code></pre>
+        <p>The snake would "overlay" the apple if they share the same x/y coordinates (just test it). This might not matter in our case because if the snakes head is the same as the apple, we would say it has been "eaten" and would (later) spawn another apple. And this is what we make next.</p>
+        <a href="#chapter-2-4-3-collision-detection_a" id="chapter-2-4-3-collision-detection"><h6>Chapter 2.4.3: Collision Detection</h6></a>
+        <blockquote>Collision detection is the computational problem of detecting 
+the intersection of two or more objects. While collision detection 
+is most often associated with its use in video games and other physical 
+simulations, it also has applications in robotics.</blockquote>
+        <p><small>Source: <a href="https://en.wikipedia.org/wiki/Collision_detection" target="blank">Wikipedia</a></small></p>
+        <p>In here we will also implement a "Game Over" mechanic using the <code>cancelAnimationFrame(id)</code> method mentioned above.
+        In our variant, We have three possible collisions:</p>
+        <ul>
+        <li>The snake ate an apple -&gt; the snake gets bigger</li>
+        <li>If the snake touched one of theedges -&gt; the game is lost</li>
+        <li>If the snake "ate" itself -&gt; the game is lost</li>
+        </ul>
+        <p>We will make this checks all inside a simple function called <code>collisionDetection()</code> which, again, we implement before the <code>rendering()</code> function.</p>
+        <pre><code class="javascript language-javascript">function gameLoop()
+{   
+    setTimeout(function() {
+        id = requestAnimationFrame(gameLoop);
+    }, 1000 / 12);
+
+    updateSnakePositionAndLength();
+
+    collisionDetection();
+
+    renderEverything();
+}</code></pre>
+        <p>A possible "collision detector" if the snake ate an apple could look like this - we just need to check if the "snakes head" which is stored in <code>snake[0]</code> (x) and <code>snake[1]</code> (y) coordinates are the same of <code>apple_x</code> and <code>apple_y</code>. If so, we set the <code>apple_eaten</code> variable to <code>true</code>, so another "new" apple can spawn. Lastly, we set add up 1 to <code>max_length_snake</code> since the snake gets bigger after it ate an apple:</p>
+        <pre><code class="javascript language-javascript">function collisionDetection()
+        {
+            if(snake[0] == apple_x &amp;&amp; snake[1] == apple_y)
+            {
+                max_length_snake++;
+                apple_eaten = true;
+            }
+        }</code></pre>
+        <p>Test it, you will see it works like a charme. Our game is now finished, we only need to implemented the "Game Over" mechanics, otherwise the game would be extremely boring.</p>
+        <p>First, we implement a <code>game_over</code> variable and initalize it with <code>false</code>:</p>
+        <pre><code class="javascript language-javascript">var game_over = false;</code></pre>
+        <p>And cancels the loop (<code>gameLoop()</code>)if it is set to true - we can implement it like this:</p>
+        <pre><code class="javascript language-javascript">function gameLoop()
+{   
+    setTimeout(function() {
+        id = requestAnimationFrame(gameLoop);
+    }, 1000 / 12);
+
+    updateSnakePositionAndLength();
+
+    collisionDetection();
+
+    if(game_over == true)
+    {
+        gameOver();
+        return;
+    }
+
+    renderEverything();
+
+}</code></pre>
+        <p>It makes sense that this is implemented after the <code>collisionDetection()</code> function because this function is used to look if any "unwanted" collision happenend and if so, the variable <code>game_over</code> is set to <code>true</code>. The <code>gameOver()</code> function, just exits the loop using <code>cancelAnimationFrame(id)</code> and <code>return</code> and prints out a small "Game Over" Message in the middle of the game field:</p>
+        <pre><code class="javascript language-javascript">function gameOver()
+{
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = 'white';
+    context.font = '50px Times New Roman';
+    context.fillText('Game Over', 140, 250);
+
+    cancelAnimationFrame(id);
+}</code></pre>
+        <p>First of we implement the "if the snake touched any edge"-collision Detection (put this code into <code>collisionDetection()</code> after the snake-ate-apple implementation):</p>
+        <pre><code class="javascript language-javascript">// check if snake colides with edges
+if (x &lt; 0) 
+{
+    game_over = true;
+}
+
+else if (x &gt;= canvas.width) 
+{
+    game_over = true;
+}
+
+if (y &lt; 0) 
+{
+    game_over = true;
+}
+
+else if (y &gt;= canvas.height) 
+{
+    game_over = true;
+}</code></pre>
+        <p>You might have asked, why the snake can go "outside" the game field. This is because the pixels can be also negative. Here we look if the snake is still in the game field.
+        Lastly, we implement the "snake eats itself" mechanic. It will check if any snake block collides with another snake clock (add this again in the <code>collisionDetection()</code> function):</p>
+        <pre><code class="javascript language-javascript">//                                       x           y
+// the 'front' snake head is always in snake[0] and snake[1]
+// check if any of those colides with next x/y (e.g. snake[2] and snake[3])
+
+for(let i = 2; i &lt; snake.length; i+=2)
+{
+    if(snake[0] == snake[i] &amp;&amp; snake[1] == snake[i+1])
+    {
+        game_over = true;
+    }
+}</code></pre>
+        <p>Also, we still can move to the left while the snake is moving right and vice versa (or moving down while the snake is moving up and vice versa). To fix this, we just need to modify our <code>eventHandler</code> a little bit:</p>
+        <pre><code class="javascript language-javascript">// Event Listener, just put at the end of JavaScript
+// it 'always listens', when we push a button
+document.addEventListener('keydown', function(e) {
+
+    // left arrow key
+    if (event.which === 37 &amp;&amp; right == false) {
+        left = true;
+        right = false;
+        down = false;
+        up = false;
+    }
+    // up arrow key
+    else if (event.which === 38 &amp;&amp; down == false) {
+        left = false;
+        right = false;
+        down = false;
+        up = true;
+    }
+    // right arrow key
+    else if (event.which === 39 &amp;&amp; left == false) {
+        left = false;
+        right = true;
+        down = false;
+        up = false;
+    }
+    // down arrow key
+    else if (event.which === 40 &amp;&amp; up == false) {
+        left = false;
+        right = false;
+        down = true;
+        up = false;
+    }
+});</code></pre>
+        <p><b>Finally</b>, if you came this far you have successfully made a small implementation of snake using (pure) JavaScript!</p>
+        <p align="center">
+            <img src="./content/result_tut_snake.gif">
+        </p>
+        <a href="#chapter-3-conclusion_a" id="chapter-3-conclusion"><h4>Chapter 3: Conclusion and important Notes</h4></a>
+        <p>You learned, how game loops (can) work. Got your attention? Of course you can modify the files as you like, things you might wanna add:</p>
+        <ul>
+        <li>A score system</li>
+        <li>aestethics improvement</li>
+        <li>mobile support</li>
+        <li>You don't loose if you touch the wall, instead your snake appears on the "other side"</li>
+        <li>let the apple spawn to another location, if the snake was too slow to catch it in time</li>
+        <li>The apple sometimes spawns at the same location (pixels) as the tail of the snake ("spaw fix")</li>
+        </ul>
+        <p>I implemented some of this in my own project (like a score system, mobile support, apple "spaw fix" and some aestethics) - you can play/get my version of the game and its source files <a href="snake_game/snake.html" target="blank">here</a>.
+        These are some ideas I came up with, of course you can make whatever you want.</p>
+
+        <p>
+        <b style="color: red;">Important Note:</b> In this project we (almost) solely used <b>global variables</b> only, since it just made the structuring of the functions for beginners simpler (we didn't need parameters etc.) <small>in my opinion</small>.
+        Yes you could have written everything in a single function, but then our code would have looked very very ugly and unstructured - this is why i decided to do it this way.
+        <b>BUT</b> as a (serious) programmer you <b>should avoid using global variables</b> (unless there is a <i>very</i> good reason) and instead use <b>local variables</b> and learn the "concept" of passing/returning variables. 
+        More infos about global and local variables can be found <a target="blank" href="https://www.w3schools.com/js/js_scope.asp"><b>here</b></a> 
+        or <a target="blank" href="https://medium.com/@js_tut/the-basics-of-javascript-variable-definitions-hoisting-aca43602e25d"><b>here</b></a> 
+        or <a target="blank" href="https://www.freecodecamp.org/news/the-visual-guide-to-javascript-variable-definitions-scope-2717ad9f0169/"><b>here</b></a>.
+        </p>
+
+        <p>&lt;canvas&gt; is a real powerful tool, you can do so much more (e.g. load sprites, make more elements etc.).
+        You could easily make a <a href="https://en.wikipedia.org/wiki/Tetris" target="blank">Tetris</a>-clone or your own version of <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)" target="blank">Breakout</a>.</p>
+        <p>But after some time, you will realize that it's not that easy to make more complicated games "from scratch". That's where you should consider switching to a framework like <a href="https://phaser.io/">Phaser</a> or other frameworks. It is a framework for canvas (and WebGL). 
+        The Phaser Framework is just a framework I know "best" because normally I don't really code in JavaScript. My prior programming language is C/C++. So if you think my code is somehow "bad" keep in mind that I am not a JavaScript-Pro. Nonetheless, I hope you enjoyed this little tutorial - if so, hit me up on <a href="https://twitter.com/simon_ranftl" target="blank">Twitter</a> and send me some feedback! Furthermore, I think I underestimated the workload a <b>little</b> bit… <small>seriously, it was a lot of work…</small></p>
+        <a href="#chapter-4-source-code_a" id="chapter-4-source-code"><h4>Chapter 4: Source Code</h4></a>
+        <p>A finalized version can be found on <a href="https://github.com/eder13/Snake-in-JS-in-190-Lines">github</a>. </p>
+        <a href="#chapter-5-bug-report_a" id="chapter-5-bug-report"><h4>Chapter 5: Bug Report</h4></a>
+        <p><b>If you find any bugs, please let me know on <a href="https://twitter.com/simon_ranftl" target="blank">Twitter</a> or write me an <a target="blank" href="legal.html">E-Mail</a>.</b></p>
+        <hr>
+        <a href="#chapter-6-footnote_a" id="chapter-6-footnote"><h4>Footnotes</h4></a>
+        <p>Solution task 1: 1|4 <a id="footnote1" href="#foot1"><sup>1</sup></a> <br>
+        Solution task 2: 100|60 <a id="footnote2" href="#foot2"><sup>2</sup></a> <br>
+        Further information to the <code>.unshift()</code> method <a href="https://alligator.io/js/push-pop-shift-unshift-array-methods/">here</a>.<a id="footnote3" href="#foot3"><sup>3</sup></a> <br>
+        This document was converted from Markdown to HTML using <a target="blank" href="https://github.com/showdownjs/showdown">showdown</a> which is licensed under <a target="blank" href="https://github.com/showdownjs/showdown/blob/master/LICENSE">MIT</a>.</p>
+        <footer style="font-family: Verdana, 'Times New Roman', Times, serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 
+        sans-serif; font-size: 0.9rem; color: black; text-align: justify; padding-top: 10px;
+        border-top: 2px solid gray; line-height: 1rem"><a href="legal.html">
+            LEGAL</a> | Coding with &#10084;&#65039; by (c) Simon Ranftl
+        </footer>
+    </div>
+</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+@font-face {
+    font-family: karamtic-arcade;
+    src: url(../fonts/ka1.ttf);
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: karamtic-arcade, Verdana, Geneva, Tahoma, sans-serif;
+    margin: auto;
+    width: 500px;
+    height: 700px;
+}
+
+/* buttons by https://www.w3schools.com/css/css3_buttons.asp (public domain) */
+.button {
+    background-color: rgb(30, 3, 73); 
+    border-radius: 5px;
+    border-color: white;
+    color: rgb(20, 235, 217);
+    padding: 2.5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    font-family: karamtic-arcade, Verdana, Geneva, Tahoma, sans-serif;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+.button:hover {
+    background-color: rgb(174,66,136); 
+    color: white;
+}
+
+a:link {text-decoration:none; color:rgb(174,66,136);line-height: 1.5rem}
+a:visited {text-decoration:none; color:rgb(174,66,136);}
+a:hover {text-decoration:none; color:rgb(235,145,202);}
+a:active {text-decoration:none; color:rgb(255,255,255);}
