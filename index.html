@@ -408,29 +408,29 @@
           
         </section>
         <section id="contact" class="padding-3y padding-bottom-8">
-          <form class="padding-1y" action="#">
+          <form class="padding-1y" name="contact" method="POST" data-netlify="true">
             <h1>Contact Me</h1>
 
             <div class="padding-05y">
               <label for="forename">Forename:</label>
-              <input id="forename" class="full-width" type="text" />
+              <input id="forename" name="forename" class="full-width" type="text" />
             </div>
 
             <div class="padding-05y">
               <label for="surname">Surname:</label>
-              <input id="surname" class="full-width" type="text" />
+              <input id="surname" name="surname" class="full-width" type="text" />
             </div>
 
             <div class="padding-05y">
               <label for="mail">E-Mail:</label>
-              <input id="mail" class="full-width" type="email" />
+              <input id="mail" name="mail" class="full-width" type="email" />
             </div>
 
             <div class="padding-05y">
               <label for="area">Message: </label>
               <textarea
                 class="full-width"
-                name="area"
+                name="message"
                 id="area"
                 cols="30"
                 rows="10"
