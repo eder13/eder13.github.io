@@ -284,7 +284,7 @@
                 Until recently, C/C++ was my go-to-language, with a little bit
                 of Java. After a web engineering course at university I've
                 become interested in Web Development, especially in
-                client-side-programming and a little bit of server-side
+                client-side programming and a little bit of server-side
                 programming.
               </p>
             </div>
@@ -326,7 +326,7 @@
               style="color: black; background-color: transparent"
               class="fab fa-js-square fa-2x third"
             ></i>
-            <!-- TODO: soon :) -->
+            <!-- TODO: React -->
             <!-- <i
               style="color: rgb(97, 218, 251)"
               class="fab fa-react fa-2x fourth"
@@ -341,7 +341,6 @@
             ></i>
           </div>
 
-          <!-- TODO: Add Projects as Grid Layouts -->
           <div class="outer-container">
             <div class="container">
               
@@ -410,6 +409,9 @@
         <section id="contact" class="padding-3y padding-bottom-8">
           <form class="padding-1y" name="contact" method="POST" data-netlify="true">
             <h1>Contact Me</h1>
+            <div id="error-msg">
+              Please fill out the necessary fields before you submit.
+            </div>
 
             <div class="padding-05y">
               <label for="forename">Forename:</label>
@@ -438,11 +440,30 @@
             </div>
 
             <div class="padding-1y">
-              <input type="submit" class="full-width" value="Submit" />
+              <input id="form-submit" type="submit" class="full-width" value="Submit"/>
             </div>
           </form>
         </section>
+
+      <!-- Script that checks Input -->
+      <script type="text/javascript">
+
+        document.getElementById("form-submit").addEventListener("click", e => {
+          
+          const forename = document.getElementById("forename").value;
+          const surname = document.getElementById("surname").value;
+          const mail = document.getElementById("mail").value;
+          const msg = document.getElementById("area").value;
+
+          if(forename === '' || surname === '' || mail === '' || msg === '') {
+            e.preventDefault();
+            document.getElementById("error-msg").style.display = "block";
+          } 
+        });
+      </script>
+
       </main>
+
     </div>
     <div class="footer-push"></div>
     <footer>
@@ -462,7 +483,7 @@
 
     <!-- Navigation on Page Scroll (JQuery) -->
     <!-- Inspired by: https://stackoverflow.com/questions/9979827/change-active-menu-item-on-page-scroll -->
-    <!-- TODO: Remove JQuery Dependency -->
+    <!-- FIXME: Remove JQuery Dependency -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -471,18 +492,17 @@
 
     <script type="text/javascript">
       // Cache selectors
-      var lastId,
-        topMenu = $("#top-menu"),
+      let lastId;
+      const topMenu = $("#top-menu"),
         topMenuHeight = topMenu.outerHeight() + 170,
         // All list items
         menuItems = $("nav ul li a:not(:last)"); // last is blog on external site
 
       // Anchors corresponding to menu items
-      var scrollItems = menuItems.map(function () {
-        var id = $(this).attr("href");
-        console.log(id);
+      const scrollItems = menuItems.map(function () {
+        const id = $(this).attr("href");
         try {
-          var item = $(id);
+          const item = $(id);
           if (item.length) {
             return item;
           }
@@ -494,17 +514,17 @@
       // Bind to scroll
       $(window).scroll(function () {
         // Get container scroll position
-        var fromTop = $(this).scrollTop() + topMenuHeight;
+        const fromTop = $(this).scrollTop() + topMenuHeight;
 
         // Get id of current scroll item
-        var cur = scrollItems.map(function () {
+        let cur = scrollItems.map(function () {
           if ($(this).offset().top < fromTop) {
             return this;
           }
         });
         // Get the id of the current element
         cur = cur[cur.length - 1];
-        var id = cur && cur.length ? cur[0].id : "";
+        let id = cur && cur.length ? cur[0].id : "";
 
         if (lastId !== id) {
           lastId = id;
@@ -513,6 +533,5 @@
         }
       });
     </script>
-    <!-- <br><br><br><br> -->
   </body>
 </html>
