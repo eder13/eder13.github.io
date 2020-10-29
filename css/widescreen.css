@@ -2,15 +2,8 @@ header #showcase-container {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  position: relative; }
-  header #showcase-container::after {
-    position: absolute;
-    left: 0;
-    content: "";
-    background: #222;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2; }
+  position: relative;
+  background: #222; }
 
 main #projects .outer-container {
   display: flex;
