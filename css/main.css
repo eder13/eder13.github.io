@@ -398,6 +398,18 @@ main #contact {
     flex-flow: column nowrap;
     align-items: center;
     width: 60%; }
+    main #contact form #js-disabled-form {
+      text-align: center;
+      width: 50%;
+      padding: 0.5rem;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      color: #31708f;
+      border-top-color: #a6e1ec;
+      display: none; }
   main #contact form > * {
     display: block;
     width: 50%;

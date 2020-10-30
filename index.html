@@ -50,6 +50,16 @@
           top: 70px;
           background-color: black;
         }
+        main #contact form #js-disabled-form {
+          display: block;
+        }
+
+        main #contact form div input[type="text"], 
+        main #contact form div input[type="email"], 
+        main #contact form div textarea,
+        main #contact form div input[type="submit"] {
+          pointer-events: none;
+        }
       </style>
     </noscript>
     <link
@@ -409,6 +419,14 @@
         <section id="contact" class="padding-3y padding-bottom-8">
           <form class="padding-1y" name="contact" method="POST" data-netlify="true">
             <h1>Contact Me</h1>
+            <div id="js-disabled-form">
+              <p>
+                <i class="fas fa-info-circle"></i>
+                <small
+                  >Please enable JavaScript to use this form.
+                </small>
+              </p>
+            </div>
             <div id="error-msg">
               Please fill out the necessary fields before you submit.
             </div>
