@@ -201,9 +201,9 @@ header .navbar {
           border: none; }
 
 header .showcase {
+  width: 100%;
   max-width: 1840px;
   height: 100vh;
-  width: 100%;
   background: url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.png") no-repeat center center/cover;
   display: flex;
   justify-content: center;
@@ -217,7 +217,7 @@ header .showcase {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 2; }
   header .showcase .container {
