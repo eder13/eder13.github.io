@@ -204,7 +204,7 @@ header .showcase {
   width: 100%;
   max-width: 1840px;
   height: 100vh;
-  background: url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.png") no-repeat center center/cover;
+  background: url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.jpg") no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: flex-end;
