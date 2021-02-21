@@ -373,7 +373,7 @@ main #projects {
     padding: 0 1rem; }
     main #projects .outer-container .container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 2rem; }
       main #projects .outer-container .container #project-1 {
         display: flex;
@@ -389,14 +389,22 @@ main #projects {
           top: 4px;
           right: 1px;
           color: #ff974c;
-          font-size: 0.8rem; }
+          font-size: 0.8rem;
+          font-weight: bold; }
+      main #projects .outer-container .container #project-4 {
+        position: relative; }
+        main #projects .outer-container .container #project-4::after {
+          content: "new";
+          position: absolute;
+          top: 4px;
+          right: 1px;
+          color: lightseagreen;
+          font-size: 0.8rem;
+          font-weight: bold; }
       main #projects .outer-container .container .project {
-        grid-column: span 2;
         border: 1px dotted #222;
         padding: 1rem;
         background-color: white; }
-        main #projects .outer-container .container .project:last-child {
-          grid-column-end: 4; }
         main #projects .outer-container .container .project h4 {
           text-align: center; }
         main #projects .outer-container .container .project p {
@@ -545,10 +553,11 @@ input[type="submit"].button-primary {
     margin-bottom: 1rem; }
     main #projects .outer-container .container {
       max-width: 1500px;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       grid-gap: 2rem; }
-      main #projects .outer-container .container .project {
-        width: 33.3%; }
+      main #projects .outer-container .container .project:last-child {
+        grid-column-end: 3; }
       main #projects .outer-container .container #project-1 img {
         width: 100%; } }
 
