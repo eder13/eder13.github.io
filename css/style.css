@@ -8,7 +8,7 @@
   box-sizing: border-box; }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   background-color: #e0e0e0; }
 
@@ -54,7 +54,7 @@ a {
   background-color: #222;
   color: white; }
 
-a[class^="btn-"]:hover {
+a[class^='btn-']:hover {
   background-color: #ff974c; }
 
 .btn-submit {
@@ -80,16 +80,16 @@ a[class^="btn-"]:hover {
   background: #ff974c; }
 
 h1 {
-  font-family: "Dosis", sans-serif;
+  font-family: 'Dosis', sans-serif;
   text-align: center; }
 
 h4 {
-  font-family: "Trispace", sans-serif; }
+  font-family: 'Trispace', sans-serif; }
 
 #top-menu a.active {
   border-bottom: 3px solid #ff974c; }
 
-input[type="checkbox"][id="toggler"],
+input[type='checkbox'][id='toggler'],
 header .navbar .logo .hamburger {
   display: none; }
 
@@ -176,7 +176,7 @@ header .navbar {
     header .navbar .nav ul li {
       margin: 0 1rem; }
       header .navbar .nav ul li a {
-        font-family: "Dosis", sans-serif;
+        font-family: 'Dosis', sans-serif;
         font-weight: 700;
         font-size: 0.95rem;
         padding-bottom: 2px;
@@ -199,7 +199,7 @@ header .showcase {
   text-align: center;
   z-index: 2; }
   header .showcase:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -232,7 +232,7 @@ header .showcase {
       overflow: hidden;
       animation: type 3s steps(40, end), cursor 1.25s infinite step-end;
       margin: 0 auto;
-      max-width: 350px;
+      max-width: 400px;
       letter-spacing: 0.1rem;
       font-style: italic;
       font-weight: 400; }
@@ -248,7 +248,7 @@ header .showcase {
   from {
     width: 0; }
   to {
-    width: 350px; } }
+    width: 400px; } }
     header .showcase .container div h1 {
       font-size: 3rem;
       font-weight: 300; }
@@ -266,13 +266,12 @@ main #about {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 120px 120px;
-    grid-column-gap: 2rem;
-    grid-row-gap: 1rem; }
+    grid-gap: 1.8rem; }
     main #about .container div:first-child {
       grid-column: 1 / span 2;
       text-align: center;
       align-self: flex-end;
-      font-family: "Dosis", sans-serif;
+      font-family: 'Dosis', sans-serif;
       font-size: 1.5rem; }
     main #about .container div:nth-child(2) {
       max-width: 31.25rem;
@@ -384,7 +383,7 @@ main #projects {
       main #projects .outer-container .container #project-3 {
         position: relative; }
         main #projects .outer-container .container #project-3::after {
-          content: "update";
+          content: 'update';
           position: absolute;
           top: 4px;
           right: 1px;
@@ -394,7 +393,7 @@ main #projects {
       main #projects .outer-container .container #project-4 {
         position: relative; }
         main #projects .outer-container .container #project-4::after {
-          content: "new";
+          content: 'new';
           position: absolute;
           top: 4px;
           right: 1px;
@@ -439,8 +438,8 @@ main #contact {
     display: block;
     width: 50%;
     margin: 0.3rem 0; }
-  main #contact form > input[type="text"],
-  main #contact form > input[type="email"] {
+  main #contact form > input[type='text'],
+  main #contact form > input[type='email'] {
     height: 2rem; }
   main #contact #error-msg {
     text-align: center;
@@ -475,8 +474,8 @@ footer {
   justify-content: space-between;
   align-items: center; }
 
-input[type="email"],
-input[type="text"],
+input[type='email'],
+input[type='text'],
 textarea {
   height: 38px;
   padding: 6px 10px;
@@ -486,8 +485,8 @@ textarea {
   box-shadow: none;
   box-sizing: border-box; }
 
-input[type="email"],
-input[type="text"],
+input[type='email'],
+input[type='text'],
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -498,8 +497,8 @@ textarea {
   padding-top: 6px;
   padding-bottom: 6px; }
 
-input[type="email"]:focus,
-input[type="text"]:focus,
+input[type='email']:focus,
+input[type='text']:focus,
 textarea:focus {
   border: 1px solid #ff974c;
   outline: 0; }
@@ -509,7 +508,7 @@ label {
   margin-bottom: 0.5rem;
   font-weight: 600; }
 
-input[type="submit"] {
+input[type='submit'] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
@@ -528,13 +527,13 @@ input[type="submit"] {
   cursor: pointer;
   box-sizing: border-box; }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type='submit']:hover,
+input[type='submit']:focus {
   color: #333;
   border-color: #888;
   outline: 0; }
 
-input[type="submit"].button-primary {
+input[type='submit'].button-primary {
   color: #fff;
   background-color: #ff974c;
   border-color: #ff974c; }
@@ -562,7 +561,7 @@ input[type="submit"].button-primary {
         width: 100%; } }
 
 @media screen and (max-width: 800px) {
-  input[type="checkbox"][id="toggler"],
+  input[type='checkbox'][id='toggler'],
   header .navbar .logo .hamburger {
     display: block; }
   #main-header .navbar {
