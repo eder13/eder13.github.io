@@ -205,10 +205,12 @@
                     document
                         .getElementById("top-menu")
                         .addEventListener("click", (e) => {
-                            nav.classList.remove("nav-show");
-                            nav.classList.add("nav-hide");
-                            navbar.classList.remove("navbar-fold-animation");
-                            checkBox.checked = false;
+                            if(e.target.tagName === 'A') {
+                                nav.classList.remove("nav-show");
+                                nav.classList.add("nav-hide");
+                                navbar.classList.remove("navbar-fold-animation");
+                                checkBox.checked = false;
+                            }
                         });
                 } else {
                     nav.classList.remove("nav-show");
@@ -338,7 +340,7 @@
                         <div style="display: flex; justify-content: center; align-items: center">
                             <div style="width: 90%">
                                 <a rel="noopener noreferrer" href="https://enigmatic-everglades-34441.herokuapp.com/" target="_blank">
-                                    <img src="./img/taskify.png" width="100%">
+                                    <img alt="taskify web app" src="./img/taskify.png" width="100%">
                                 </a>
                             </div>
                         </div>
@@ -359,7 +361,7 @@
                         <div style="display: flex; justify-content: center; align-items: center">
                             <div style="width: 90%">
                                 <a rel="noopener noreferrer" href="https://github.com/sw20-tug/ASD-Morning-4" target="_blank">
-                                    <img src="./img/vocab.png" width="100%">
+                                    <img alt="vocab trainer" src="./img/vocab.png" width="100%">
                                 </a>
                             </div>
                         </div>
@@ -394,7 +396,7 @@
                             <tr>
                                 <td class="padding-top-05" width="50%" height="175px">
 
-                                    <img style="max-width: 275px;" src="img/snake.gif" width="100%" height="100%"/>
+                                    <img alt="snake gif" style="max-width: 275px;" src="img/snake.gif" width="100%" height="100%"/>
 
                                 </td>
                                 <td width="50%" height="175px"
