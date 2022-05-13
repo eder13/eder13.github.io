@@ -1,3 +1,43 @@
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("../fonts/roboto-v30-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v30-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local(""), url("../fonts/roboto-v30-latin-700.woff2") format("woff2"), url("../fonts/roboto-v30-latin-700.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* dosis-regular - latin */
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("../fonts/dosis-v26-latin-regular.woff2") format("woff2"), url("../fonts/dosis-v26-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* trispace-regular - latin */
+@font-face {
+  font-family: 'Trispace';
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("../fonts/trispace-v17-latin-regular.woff2") format("woff2"), url("../fonts/trispace-v17-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* trispace-700 - latin */
+@font-face {
+  font-family: 'Trispace';
+  font-style: normal;
+  font-weight: 700;
+  src: local(""), url("../fonts/trispace-v17-latin-700.woff2") format("woff2"), url("../fonts/trispace-v17-latin-700.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
 @media (max-width: 926px) and (min-width: 801px) {
   main #about .container div:last-child {
     margin-top: 2.5rem; } }
