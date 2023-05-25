@@ -422,17 +422,11 @@ main #projects {
           width: 80%; }
       main #projects .outer-container .container #project-3 {
         position: relative; }
-        main #projects .outer-container .container #project-3::after {
-          content: 'update';
-          position: absolute;
-          top: 4px;
-          right: 1px;
-          color: #ff974c;
-          font-size: 0.8rem;
-          font-weight: bold; }
       main #projects .outer-container .container #project-4 {
         position: relative; }
-        main #projects .outer-container .container #project-4::after {
+      main #projects .outer-container .container #project-5 {
+        position: relative; }
+        main #projects .outer-container .container #project-5::after {
           content: 'new';
           position: absolute;
           top: 4px;
@@ -593,10 +587,14 @@ input[type='submit'].button-primary {
     main #projects .outer-container .container {
       max-width: 1500px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       grid-gap: 2rem; }
-      main #projects .outer-container .container .project:last-child {
-        grid-column-end: 3; }
+      main #projects .outer-container .container .project {
+        grid-column: span 2; }
+      main #projects .outer-container .container .project:nth-child(4) {
+        grid-column: 2 / span 2; }
+      main #projects .outer-container .container .project:nth-child(5) {
+        grid-column: 4 / span 2; }
       main #projects .outer-container .container #project-1 img {
         width: 100%; } }
 
