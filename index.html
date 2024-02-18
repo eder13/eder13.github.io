@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- TODO: Meta Tags -->
+    <meta name="author" content="Simon Ranftl">
+    <meta name="description" content="My name is Simon and I am a Frontend Web Engineer from Graz, Austria." />
+    <meta name="keywords" content="index, homepage, home, landing, start, introduction, about, simon ranftl, ranftl.dev, eder13, simon, ranftl, austria, graz, steiermark, programming, react, nodejs, web development, typescript, frontend developer, software engineer">
+    <meta name="robots" content="all">
+    <meta name="country" content="Austria">
 
     <title>Simon Ranftl | ranftl.dev</title>
     <link
@@ -130,11 +134,13 @@
                 <div class="actual-logo">
                     <a href="./index.html">
                         <img
-                                src="./img/logo.png"
-                                width="100%"
-                                height="100%"
-                                title="ranftl logo"
-                                alt="logo"
+                            loading="eager"
+                            src="./img/logo.png"
+                            width="200"
+                            height="200"
+                            title="ranftl logo"
+                            alt="logo"
+                            style="max-width: 100%; height: auto"
                         />
                     </a>
                 </div>
@@ -222,17 +228,23 @@
             }
         </script>
         <div id="showcase-container">
-            <section class="showcase">
+            <section id="showcase" class="showcase">
+            </section>
+            <section class="showcase-text" style="width: 100dvw;bottom: 0;position: absolute;z-index: 3">
                 <div class="container">
                     <div>
-                        <h1>Hi! My name is Simon.</h1>
+                        <h1 style="color: #fff;">
+                            Hi! My name is Simon.
+                        </h1>
                         <h3 class="typewriter">
                             I am a Frontend Web Engineer.
                         </h3>
                     </div>
-                    <a id="about-btn" class="down-arrow" href="#about"
-                    ><i class="fas fa-chevron-circle-down fa-3x"></i
-                    ></a>
+                    <a id="about-btn" class="down-arrow" href="#about" style="width: 50px;height: 50px;display: grid;place-items: center;border-radius: 50%;background-color: rgba(255, 255, 255, 0.8);box-shadow: 0 0 0.8rem 0.3rem rgba(253,242,232,.44313725490196076);"><i class="arrow down" style="
+                        /* transform: scale(1.5); */
+                        width: 40%;
+                        height: 40%;
+                    "></i></a>
                 </div>
             </section>
         </div>
@@ -324,7 +336,7 @@
                         <div style="display: flex; justify-content: center; align-items: center">
                             <div style="width: 100%">
                                 <a rel="noopener noreferrer" href="https://lostseasons.itch.io/lost-season" target="_blank">
-                                    <img alt="lost seasons game" src="./img/lost-seasons.png" width="100%">
+                                    <img loading="lazy" width="2562" height="1354" alt="lost seasons game" src="./img/lost-seasons.png" style="max-width: 100%; height: auto">
                                 </a>
                             </div>
                         </div>
@@ -340,7 +352,7 @@
                         <div style="display: flex; justify-content: center; align-items: center">
                             <div style="width: 90%">
                                 <a rel="noopener noreferrer" href="https://github.com/eder13/taskify" target="_blank">
-                                    <img alt="taskify web app" src="./img/taskify.png" width="100%">
+                                    <img loading="lazy" width="574" height="551" alt="taskify web app" src="./img/taskify.png" style="max-width: 100%; height: auto">
                                 </a>
                             </div>
                         </div>
@@ -361,7 +373,7 @@
                         <div style="display: flex; justify-content: center; align-items: center">
                             <div style="width: 90%">
                                 <a rel="noopener noreferrer" href="https://github.com/sw20-tug/ASD-Morning-4" target="_blank">
-                                    <img alt="vocab trainer" src="./img/vocab.png" width="100%">
+                                    <img loading="lazy" width="1153" height="789" alt="vocab trainer" src="./img/vocab.png" style="max-width: 100%; height: auto">
                                 </a>
                             </div>
                         </div>
@@ -395,9 +407,7 @@
                         <table style="background-color: #E7E7E7; color: black; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; border: 3px inset silver; margin: auto;">
                             <tr>
                                 <td class="padding-top-05" width="50%" height="175px">
-
-                                    <img alt="snake gif" style="max-width: 275px;" src="img/snake.gif" width="100%" height="100%"/>
-
+                                    <img loading="lazy" alt="snake gif" style="max-width: 275px;" src="img/snake.gif" width="100%" height="100%">
                                 </td>
                                 <td width="50%" height="175px"
                                     style="border-left: 1px inset silver;padding-left: 10px; font-size: 0.8rem">
@@ -549,6 +559,25 @@
             menuItems.filter("[href='#" + id + "']").addClass("active");
         }
     });
+</script>
+<script type="text/javascript">
+    window.addEventListener('load', () => {
+        const showCaseImage = new Image();
+        const showCaseImageThumbnail = document.getElementById('showcase');
+
+        const backgroundProperties = window.getComputedStyle(showCaseImageThumbnail).background;
+
+        const match = backgroundProperties.match(/url\("([^"]+)"\)/);
+
+        showCaseImage.src = match?.[1];
+
+        showCaseImage.addEventListener('load', () => {
+            const styleElem = document.head.appendChild(document.createElement("style"));
+            styleElem.innerHTML = "#showcase:before { content: ''; backdrop-filter: blur(0); transition: all 0.2s ease-in; }";
+            showCaseImageThumbnail.style.background = `#000 url('${match?.[1].replace('_thumbnail', '') }') no-repeat 50% / cover`;
+            showCaseImageThumbnail.style.filter = 'blur(0)';
+        });
+    }, { once: true });
 </script>
 </body>
 </html>

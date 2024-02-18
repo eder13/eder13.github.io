@@ -61,7 +61,7 @@ body {
   border: 1px solid transparent;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 6;
   background-color: #d9edf7;
   border-color: #bce8f1;
   color: #31708f;
@@ -192,6 +192,16 @@ header .navbar .logo .hamburger {
   font-size: 0.8rem;
   text-align: center; }
 
+.arrow {
+  border: solid black;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 6px; }
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg); }
+
 header .navbar {
   width: 100%;
   height: 50px;
@@ -204,7 +214,7 @@ header .navbar {
   top: 0;
   left: 0;
   z-index: 5;
-  transition: background 0.2s ease-in; }
+  transition: all 0.2s ease-in; }
   header .navbar-change-background {
     background-color: black; }
   header .navbar .logo {
@@ -227,11 +237,16 @@ header .navbar {
         header .navbar .nav ul li a:active {
           border: none; }
 
+header #showcase-container {
+  position: relative; }
+
 header .showcase {
   width: 100%;
   max-width: 1840px;
-  height: 100vh;
-  background: url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.jpg") no-repeat center center/cover;
+  height: 100dvh;
+  background: #000 url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg") no-repeat 50%/cover;
+  transition: all ease-in 0.5s;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -244,38 +259,43 @@ header .showcase {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 2; }
-  header .showcase .container {
-    height: 44vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: center;
+    z-index: 2;
+    backdrop-filter: blur(1rem);
+    transition: all 0.2s ease-in; }
+
+header .showcase-text .container {
+  height: 44vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3; }
+  header .showcase-text .container .down-arrow {
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
     z-index: 3; }
-    header .showcase .container .down-arrow {
-      margin-bottom: 1rem;
-      border-radius: 50%;
-      color: #e0e0e0;
-      transition: color 0.2s ease-in;
-      z-index: 3; }
-      header .showcase .container .down-arrow:hover {
-        color: #ff974c; }
-      header .showcase .container .down-arrow i {
-        border-radius: 50%;
-        box-shadow: 0px 0px 0.8rem 0.3rem #fdf2e871; }
-    header .showcase .container div .typewriter {
-      color: white;
-      border-right: 2px solid orange;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: type 3s steps(40, end), cursor 1.25s infinite step-end;
-      margin: 0 auto;
-      max-width: 300px;
-      letter-spacing: 0.1rem;
-      font-style: italic;
-      font-weight: 400; }
+    header .showcase-text .container .down-arrow:hover {
+      background-color: #ff974c !important; }
+      header .showcase-text .container .down-arrow:hover .arrow.down {
+        border: solid #fff;
+        border-width: 0 6px 6px 0;
+        display: inline-block;
+        padding: 6px; }
+  header .showcase-text .container div .typewriter {
+    color: white;
+    border-right: 2px solid orange;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: type 3s steps(40, end), cursor 1.25s infinite step-end;
+    margin: 0 auto;
+    max-width: 300px;
+    letter-spacing: 0.1rem;
+    font-style: italic;
+    font-weight: 400; }
 
 @keyframes cursor {
   from,
@@ -289,9 +309,9 @@ header .showcase {
     width: 0; }
   to {
     width: 300px; } }
-    header .showcase .container div h1 {
-      font-size: 3rem;
-      font-weight: 300; }
+  header .showcase-text .container div h1 {
+    font-size: 3rem;
+    font-weight: 300; }
 
 main #about {
   background-color: #222;
