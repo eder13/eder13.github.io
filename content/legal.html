@@ -9,6 +9,30 @@
   <style>
     body {text-align: center; color: #333}    
     #wrapper_legal {margin: 3rem 0}
+    .back-btn {
+      display: inline-block;
+      height: 38px;
+      padding: 0 30px;
+      color: #555;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 38px;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      background-color: transparent;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+      cursor: pointer;
+      box-sizing: border-box; 
+    }
+    .back-btn:hover {
+      color: #333;
+      border-color: #888;
+      outline: 0;
+    }
   </style>
 </head>
 <body>
@@ -22,29 +46,17 @@
             <em>Type:</em> private web page<br>
             <em>Location:</em> Graz<br>
             <em>&nbsp;Contact:</em> <a href="javascript:window.location.href = 'mailto:' + ['simon.ranftl82','gmail.com'].join('@')">simon.<!---->ranftl82@<!---->gmail.com</a>&nbsp;
-            <br><br>
           </section>
 
-          <h3>Additional used Software & Privacy</h3>
-          <br>
           <section id="content_legal_software">
-            <a href="https://support.google.com/analytics/answer/2790010?hl=en">Google Analytics</a>:
-            Used for track-analysis. <br>Therefore, <u>Cookies</u> are needed (<a href="https://www.google.at/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0CCkQFjAB&url=http%3A%2F%2Fwww.google.com%2Fpolicies%2Fprivacy%2F&ei=XdspVJ6DBpPhaIjngqAB&usg=AFQjCNEc1Z-4GangxLgZKDvUQKrPQNeW3g&bvm=bv.76247554,d.d2s">Policy</a>).<br>
-            ------<br>
+            <br>------<br>
 
             <small>If any further software is used in my projects, it will be <br>indicated seperately.</small>
             
             </section>
               <div class="padding-1y">
-                <input type="submit" id="back" value="Back" />
+                <a href="https://ranftl.dev" class="back-btn" id="back">Back</a>
               </div>
-
-              <script type="text/javascript">
-                document.getElementById("back").addEventListener("click", (e) => {
-                  e.preventDefault();
-                  window.location.href = "https://ranftl.dev";
-                });
-              </script>
             </section>
     </section>
   </div>
