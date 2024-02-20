@@ -31,6 +31,8 @@
         crossorigin
     />
 
+    <link rel="preload" as="image" href="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg">
+
     <title>Simon Ranftl | ranftl.dev</title>
     <link
             rel="stylesheet"
@@ -581,23 +583,25 @@
     });
 </script>
 <script type="text/javascript">
-    window.addEventListener('load', () => {
+    window.addEventListener('DOMContentLoaded', () => {
         const showCaseImage = new Image();
         const showCaseImageThumbnail = document.getElementById('showcase');
+        const fullImage = '../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.jpg';
 
-        const backgroundProperties = window.getComputedStyle(showCaseImageThumbnail).background;
+        showCaseImage.src = fullImage;
 
-        const match = backgroundProperties.match(/url\("([^"]+)"\)/);
+        if (showCaseImage.complete) {
+            onImageLoading();
+        } else {
+            showCaseImage.addEventListener('load', onImageLoading, { once: true });
+        }
 
-        showCaseImage.src = match?.[1];
-
-        showCaseImage.addEventListener('load', () => {
-            const styleElem = document.head.appendChild(document.createElement("style"));
-            styleElem.innerHTML = "#showcase:before { content: ''; backdrop-filter: blur(0); transition: all 0.2s ease-in; }";
-            showCaseImageThumbnail.style.background = `#000 url('${match?.[1].replace('_thumbnail', '') }') no-repeat 50% / cover`;
-            showCaseImageThumbnail.style.filter = 'blur(0)';
-        });
-    }, { once: true });
+        function onImageLoading() {
+            const showCaseImageElementStyle = showCaseImageThumbnail.style;
+            showCaseImageElementStyle.setProperty('--backdrop-filter', 'blur(0)');
+            showCaseImageElementStyle.setProperty('--showcase-image', `url('${fullImage}')`);
+        }
+    }, { once: true })
 </script>
 </body>
 </html>

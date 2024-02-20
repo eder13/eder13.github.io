@@ -42,6 +42,10 @@
   main #about .container div:last-child {
     margin-top: 2.5rem; } }
 
+:root {
+  --backdrop-filter: blur(1rem);
+  --showcase-image: url('../img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg'); }
+
 * {
   margin: 0;
   padding: 0;
@@ -243,9 +247,8 @@ header #showcase-container {
 header .showcase {
   width: 100%;
   max-width: 1840px;
-  height: 100svh;
-  background: #222 url("./../img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg") no-repeat 50%/cover;
-  transition: all ease-in 0.5s;
+  height: 100lvh;
+  background: var(--showcase-image) no-repeat 50%/cover;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -253,17 +256,25 @@ header .showcase {
   color: #f4f4f4;
   text-align: center;
   z-index: 2; }
-  header .showcase:before {
+  header .showcase::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100svh;
-    background-color: rgba(0, 0, 0, 0.7);
+    height: 100lvh;
     z-index: 2;
-    backdrop-filter: blur(1rem);
-    transition: all 0.2s ease-in; }
+    backdrop-filter: var(--backdrop-filter);
+    transition: backdrop-filter 0.2s ease-in; }
+  header .showcase::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100lvh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2; }
 
 header .showcase-text .container {
   height: 44vh;
