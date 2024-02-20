@@ -247,7 +247,7 @@ header #showcase-container {
 header .showcase {
   width: 100%;
   max-width: 1840px;
-  height: 100lvh;
+  height: 100svh;
   background: var(--showcase-image) no-repeat 50%/cover;
   padding: 10px;
   display: flex;
@@ -262,7 +262,7 @@ header .showcase {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100lvh;
+    height: 100svh;
     z-index: 2;
     backdrop-filter: var(--backdrop-filter);
     transition: backdrop-filter 0.2s ease-in; }
@@ -272,7 +272,7 @@ header .showcase {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100lvh;
+    height: 100svh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 2; }
 
@@ -526,7 +526,7 @@ main #contact {
   z-index: -4; }
 
 footer {
-  width: 100lvw;
+  width: 100svw;
   height: 50px;
   position: fixed;
   left: 0;
