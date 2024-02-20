@@ -31,7 +31,7 @@
         crossorigin
     />
 
-    <link rel="preload" as="image" href="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg">
+    <link fetchpriority="high" rel="preload" as="image" href="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg">
 
     <title>Simon Ranftl | ranftl.dev</title>
     <link
@@ -250,9 +250,10 @@
             }
         </script>
         <div id="showcase-container">
-            <section id="showcase" class="showcase">
+            <section id="showcase-wrapper-img" class="showcase" style="width: 100lvw; height: 100lvh;">
+                <img loading="eager" fetchPriority="high" id="showcase-img" style="width: 100lvw; height: 100lvh; max-width: 100%; object-fit: cover" src="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg" width="2481" height="1772" >
             </section>
-            <section class="showcase-text" style="width: 100dvw;bottom: 0;position: absolute;z-index: 3">
+            <section class="showcase-text" style="width: 100lvw;bottom: 0;position: absolute;z-index: 3">
                 <div class="container">
                     <div>
                         <h1 style="color: #fff;">
@@ -582,26 +583,32 @@
         }
     });
 </script>
-<script type="text/javascript">
+<script type="text/javascript"> 
     window.addEventListener('DOMContentLoaded', () => {
-        const showCaseImage = new Image();
-        const showCaseImageThumbnail = document.getElementById('showcase');
+        const showCaseImageImgElement = new Image();
+        const showCaseThumbnailImgElemnt = document.getElementById('showcase-img');
         const fullImage = '../img/Simon_Portrait_copyright_blaufuehlerfotografie_01.jpg';
 
-        showCaseImage.src = fullImage;
+        showCaseImageImgElement.src = fullImage;
+        showCaseImageImgElement.width = 2481;
+        showCaseImageImgElement.height = 1772;
+        showCaseImageImgElement.style = "width: 100lvw; height: 100lvh; max-width: 100%; object-fit: cover";
+        showCaseImageImgElement.id = "showcase-img";
+        showCaseImageImgElement.fetchPriority = "high";
 
-        if (showCaseImage.complete) {
-            onImageLoading();
+        if (showCaseImageImgElement.complete) {
+            onImageLoaded();
         } else {
-            showCaseImage.addEventListener('load', onImageLoading, { once: true });
+            showCaseImageImgElement.addEventListener('load', onImageLoaded, { once: true });
         }
 
-        function onImageLoading() {
-            const showCaseImageElementStyle = showCaseImageThumbnail.style;
-            showCaseImageElementStyle.setProperty('--backdrop-filter', 'blur(0)');
-            showCaseImageElementStyle.setProperty('--showcase-image', `url('${fullImage}')`);
+        function onImageLoaded() {
+            showCaseThumbnailImgElemnt.replaceWith(showCaseImageImgElement);
+            const showcaseImageWrapper = document.getElementById('showcase-wrapper-img').style;
+            showcaseImageWrapper.setProperty('--backdrop-filter', 'blur(0)');
         }
-    }, { once: true })
+    }, { once: true });
 </script>
+
 </body>
 </html>

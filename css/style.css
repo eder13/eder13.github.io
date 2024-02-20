@@ -526,7 +526,7 @@ main #contact {
   z-index: -4; }
 
 footer {
-  width: 100vw;
+  width: 100lvw;
   height: 50px;
   position: fixed;
   left: 0;
