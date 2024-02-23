@@ -242,14 +242,15 @@ header .navbar {
           border: none; }
 
 header #showcase-container {
-  position: relative; }
+  position: relative;
+  width: 100%;
+  max-width: 1840px;
+  height: 100svh; }
 
 header .showcase {
   width: 100%;
-  max-width: 1840px;
-  height: 100svh;
+  height: 100%;
   background: var(--showcase-image) no-repeat 50%/cover;
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
