@@ -251,7 +251,7 @@
         </script>
         <div id="showcase-container">
             <section id="showcase-wrapper-img" class="showcase" style="width: 100%; height: 100%;">
-                <img loading="eager" fetchPriority="high" id="showcase-img" style="width: 100%; height: 100%; max-width: 100%; object-fit: cover" src="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg" width="2481" height="1772" >
+                <img loading="eager" fetchPriority="high" alt="showcase-img-thumbnail" id="showcase-img" style="width: 100%; height: 100%; max-width: 100%; object-fit: cover" src="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg" width="2481" height="1772" >
             </section>
             <section class="showcase-text" style="width: 100%;bottom: 0;position: absolute;z-index: 3">
                 <div class="container">
@@ -369,7 +369,7 @@
                         <h4 class="padding-bottom-1">taskify</h4>
                         <p class="padding-bottom-1">
                             Built with React, Redux, Spring Data REST and OAuth2 (Google Sign-In), taskify is a CRUD App that helps you to 
-                            organize your tasks. The source code is available <a href="https://github.com/eder13/taskify" target="_blank">here</a>.
+                            organize your tasks. The source code is available can be found on <a href="https://github.com/eder13/taskify" target="_blank">Github</a>.
                         </p>
                         
                         <div style="display: flex; justify-content: center; align-items: center">
@@ -595,6 +595,7 @@
         showCaseImageImgElement.style = "width: 100%; height: 100%; max-width: 100%; object-fit: cover";
         showCaseImageImgElement.id = "showcase-img";
         showCaseImageImgElement.fetchPriority = "high";
+        showCaseImageImgElement.alt="showcase-img-high-res"
 
         if (showCaseImageImgElement.complete) {
             onImageLoaded();
