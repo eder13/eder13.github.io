@@ -127,6 +127,11 @@ h1 {
   font-family: 'Dosis', sans-serif;
   text-align: center; }
 
+h2 {
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  font-size: 32px; }
+
 h4 {
   font-family: 'Trispace', sans-serif; }
 
@@ -482,45 +487,24 @@ main #contact {
   flex-flow: column nowrap;
   justify-items: center;
   align-items: center; }
-  main #contact form {
+  main #contact .contact-inner {
     background-color: white;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     width: 60%; }
-    main #contact form #js-disabled-form {
-      text-align: center;
-      width: 50%;
-      padding: 0.5rem;
-      margin-bottom: 20px;
-      border: 1px solid transparent;
-      border-radius: 5px;
-      background-color: #d9edf7;
-      border-color: #bce8f1;
-      color: #31708f;
-      border-top-color: #a6e1ec;
-      display: none; }
-  main #contact form > * {
+    main #contact .contact-inner .contact-link {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center; }
+  main #contact .contact-inner > * {
     display: block;
     width: 50%;
     margin: 0.3rem 0; }
-  main #contact form > input[type='text'],
-  main #contact form > input[type='email'] {
-    height: 2rem; }
-  main #contact #error-msg {
-    text-align: center;
-    width: 50%;
-    padding: 0.5rem;
-    border: 1px solid transparent;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-    border-radius: 5px;
-    display: none; }
 
 .footer-push {
   width: 100%;
-  height: 50px;
+  height: 140px;
   position: absolute;
   background: transparent;
   opacity: 1;
@@ -528,17 +512,15 @@ main #contact {
 
 footer {
   width: 100svw;
-  height: 50px;
+  height: 140px;
   position: fixed;
   left: 0;
   bottom: 0;
   background-color: #222;
   z-index: -4;
   padding: 1rem;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center; }
+  display: grid;
+  place-items: center; }
 
 input[type='email'],
 input[type='text'],
@@ -773,7 +755,7 @@ input[type='submit'].button-primary {
         width: 100%; }
   main #contact {
     margin-top: 0; }
-    main #contact form {
+    main #contact .contact-inner {
       width: 100%; }
-      main #contact form > * {
+      main #contact .contact-inner > * {
         width: 90%; } }

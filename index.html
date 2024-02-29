@@ -8,7 +8,6 @@
     <meta name="keywords" content="index, homepage, home, landing, start, introduction, about, simon ranftl, ranftl.dev, eder13, simon, ranftl, austria, graz, steiermark, programming, react, nodejs, web development, typescript, frontend developer, software engineer">
     <meta name="robots" content="all">
     <meta name="country" content="Austria">
-
     <link
         rel="preload"
         href="./fonts/roboto-v30-latin-regular.woff2"
@@ -30,14 +29,9 @@
         type="font/woff2"
         crossorigin
     />
-
     <link fetchpriority="high" rel="preload" as="image" href="./img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg">
-
     <title>Simon Ranftl | ranftl.dev</title>
-    <link
-            rel="stylesheet"
-            href="./css/font-awesome/5.13.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="./css/font-awesome/5.13.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/style.min.css"/>
 
     <noscript>
@@ -51,17 +45,6 @@
             header .navbar {
                 top: 70px;
                 background-color: black;
-            }
-
-            main #contact form #js-disabled-form {
-                display: block;
-            }
-
-            main #contact form div input[type="text"],
-            main #contact form div input[type="email"],
-            main #contact form div textarea,
-            main #contact form div input[type="submit"] {
-                pointer-events: none;
             }
         </style>
     </noscript>
@@ -277,7 +260,7 @@
         <section id="about" class="padding-bottom-3">
             <div class="container margin-2x">
                 <div>
-                    <h1 class="">About <span id="flash">Me</span></h1>
+                    <h2 class="">About <span id="flash">Me</span></h2>
                 </div>
 
                 <div>
@@ -316,7 +299,7 @@
             });
         </script>
         <section class="padding-2y" id="projects">
-            <h1 class="padding-1y">Projects</h1>
+            <h2 class="padding-1y">Projects</h2>
 
             <p class="small-text-aligned-center padding-05y">powered by</p>
             <div class="tech-logos">
@@ -451,83 +434,35 @@
 
         </section>
         <section id="contact" class="padding-3y padding-bottom-8">
-            <form class="padding-1y" name="contact" method="POST" data-netlify="true">
-                <h1>Contact Me</h1>
-                <div id="js-disabled-form">
-                    <p>
-                        <i class="fas fa-info-circle"></i>
-                        <small
-                        >Please enable JavaScript to use this form.
-                        </small>
-                    </p>
-                </div>
-                <div id="error-msg">
-                    Please fill out the necessary fields before you submit.
-                </div>
-
-                <div class="padding-05y">
-                    <label for="forename">Forename:</label>
-                    <input id="forename" name="forename" class="full-width" type="text"/>
-                </div>
-
-                <div class="padding-05y">
-                    <label for="surname">Surname:</label>
-                    <input id="surname" name="surname" class="full-width" type="text"/>
+            <div style="padding-bottom: 5rem;" class="contact-inner padding-1y" >
+                <h2 style="padding-bottom: 2rem">Contact</h2>
+                <div style="display: flex; justify-content: space-evenly; width: 100%; max-width: 1080px;">
+                    <a class="contact-link" href="#" onclick="javascript:window.location='mailto:' + 'simon.ranftl82@gmail.com' + '?subject=Contact via ranftl.dev&body=Hi Simon 👋! I saw your Website ' + window.location + ' and wanted to ask...';return false;">
+                        <i class="fa fa-envelope fa-3x"></i>
+                        <div>E-Mail</div>
+                    </a>
+                    <a class="contact-link" rel="noopener noreferrer" href="https://github.com/eder13" target="_blank">
+                        <i class="fab fa-linkedin fa-3x"></i>
+                        <div>LinkedIn</div>
+                    </a>
+                    <a class="contact-link" rel="noopener noreferrer" href="https://github.com/eder13" target="_blank">
+                        <i class="fab fa-github-square fa-3x"></i>
+                        <div>GitHub</div>
+                    </a>
+                    <a class="contact-link" rel="noopener noreferrer" href="https://www.instagram.com/simon_ranftl/" target="_blank">
+                        <i class="fab fa-instagram-square fa-3x"></i>
+                        <div>Instagram</div>
+                    </a>
                 </div>
 
-                <div class="padding-05y">
-                    <label for="mail">E-Mail:</label>
-                    <input id="mail" name="mail" class="full-width" type="email"/>
-                </div>
-
-                <div class="padding-05y">
-                    <label for="area">Message: </label>
-                    <textarea
-                            class="full-width"
-                            name="message"
-                            id="area"
-                            cols="30"
-                            rows="10"
-                    ></textarea>
-                </div>
-
-                <div class="padding-1y">
-                    <input id="form-submit" type="submit" class="full-width" value="Submit"/>
-                </div>
-            </form>
+            </div>
         </section>
-        <!-- Script that checks Input -->
-        <script type="text/javascript">
-
-            document.getElementById("form-submit").addEventListener("click", e => {
-
-                const forename = document.getElementById("forename").value;
-                const surname = document.getElementById("surname").value;
-                const mail = document.getElementById("mail").value;
-                const msg = document.getElementById("area").value;
-
-                if (forename === '' || surname === '' || mail === '' || msg === '') {
-                    e.preventDefault();
-                    document.getElementById("error-msg").style.display = "block";
-                }
-            });
-        </script>
     </main>
 </div>
 <div class="footer-push"></div>
 <footer>
     <a href="content/legal.html">LEGAL</a>
-
-    <div>
-        <!-- <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a> -->
-        <a rel="noopener noreferrer" href="https://www.instagram.com/simon_ranftl/" target="_blank"
-        ><i class="fab fa-instagram-square fa-2x"></i
-        ></a>
-        <!-- <a href="#"><i class="fab fa-linkedin fa-2x"></i></a> -->
-        <a rel="noopener noreferrer" href="https://github.com/eder13" target="_blank"
-        ><i class="fab fa-github-square fa-2x"></i
-        ></a>
-    </div>
+    <div><p style="color: #fff">(c) Simon Ranftl</p></div>
 </footer>
 
 <!-- Navigation on Page Scroll (JQuery) -->
@@ -543,7 +478,7 @@
     // Cache selectors
     let lastId;
     const topMenu = $("#top-menu"),
-        topMenuHeight = topMenu.outerHeight() + 170,
+        topMenuHeight = topMenu.outerHeight() + 400,
         // All list items
         //menuItems = $("nav ul li a:not(:last)"); // last is blog on external site
         menuItems = $("nav ul li a"); // last is blog on external site
