@@ -405,7 +405,7 @@ main #projects {
     main #projects .tech-logos .third {
       position: relative; }
       main #projects .tech-logos .third::after {
-        content: "ES6+";
+        content: "JS/TS";
         font-weight: bold;
         font-size: 0.7rem;
         color: #222;
@@ -443,6 +443,39 @@ main #projects {
         bottom: -0.9rem;
         left: 0.1rem;
         left: -0.2rem; }
+    main #projects .tech-logos .seventh {
+      position: relative; }
+      main #projects .tech-logos .seventh::after {
+        content: "PHP";
+        font-weight: bold;
+        font-size: 0.7rem;
+        color: #222;
+        position: absolute;
+        bottom: -0.9rem;
+        left: 0.1rem;
+        left: 0.6rem; }
+    main #projects .tech-logos .eighth {
+      position: relative; }
+      main #projects .tech-logos .eighth::after {
+        content: "Unity";
+        font-weight: bold;
+        font-size: 0.7rem;
+        color: #222;
+        position: absolute;
+        bottom: -0.9rem;
+        left: 0.1rem;
+        left: 0.3rem; }
+    main #projects .tech-logos .nineth {
+      position: relative; }
+      main #projects .tech-logos .nineth::after {
+        content: "Node";
+        font-weight: bold;
+        font-size: 0.7rem;
+        color: #222;
+        position: absolute;
+        bottom: -0.9rem;
+        left: 0.1rem;
+        left: 0.1rem; }
   main #projects .outer-container {
     margin-top: 4rem;
     margin-bottom: 1rem;
@@ -463,7 +496,9 @@ main #projects {
         position: relative; }
       main #projects .outer-container .container #project-5 {
         position: relative; }
-        main #projects .outer-container .container #project-5::after {
+      main #projects .outer-container .container #project-6 {
+        position: relative; }
+        main #projects .outer-container .container #project-6::after {
           content: 'new';
           position: absolute;
           top: 4px;
