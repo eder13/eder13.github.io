@@ -154,6 +154,7 @@
                     </a>
                 </div>
                 <!-- For Mobile -->
+                <label class="sr-only" for="toggler">Hamburger menu</label>
                 <input type="checkbox" onclick="menuToggler()" id="toggler"/>
                 <div class="hamburger">
                     <div></div>
@@ -169,7 +170,19 @@
                           scroll mark JQuery Script to mark top (HOME); onclick="false"
                           prevents undefined behavior with '#' in URL.
                         -->
-                        <a class="active" href="#" onclick="return false"></a>
+                        <a style="visibility: hidden; position: absolute; border: 0!important;
+                        clip: rect(1px,1px,1px,1px)!important;
+                        -webkit-clip-path: inset(50%)!important;
+                        clip-path: inset(50%)!important;
+                        height: 1px!important;
+                        overflow: hidden!important;
+                        margin: -1px!important;
+                        padding: 0!important;
+                        position: absolute!important;
+                        width: 1px!important;
+                        white-space: nowrap!important;
+                        display: inline;
+                        color: white;" aria-hidden="true" class="active" href="#" onclick="return false">.</a>
                     </li>
                     <li>
                         <a id="ab" href="#about">ABOUT</a>
@@ -250,11 +263,14 @@
                             I am a Frontend Web Engineer.
                         </h3>
                     </div>
-                    <a id="about-btn" class="down-arrow" href="#about" style="width: 50px;height: 50px;display: grid;place-items: center;border-radius: 50%;background-color: rgba(255, 255, 255, 0.8);box-shadow: 0 0 0.8rem 0.3rem rgba(253,242,232,.44313725490196076);"><i class="arrow down" style="
+                    <a title="Go To About Section" id="about-btn" class="down-arrow" href="#about" style="width: 50px;height: 50px;display: grid;place-items: center;border-radius: 50%;background-color: rgba(255, 255, 255, 0.8);box-shadow: 0 0 0.8rem 0.3rem rgba(253,242,232,.44313725490196076);">
+                        <i aria-hidden="true" class="arrow down" style="
                         /* transform: scale(1.5); */
                         width: 40%;
                         height: 40%;
-                    "></i></a>
+                    "></i>
+                    <span class="sr-only">Go To About Section</span>
+                    </a>
                 </div>
             </section>
         </div>
@@ -269,7 +285,7 @@
 
                 <div>
                     <p>
-                        My name is Simon Ranftl and I am a Frontend Web Engineer at <a rel="noopener noreferrer" href="https://www.netconomy.net/" target="_blank">Netconomy</a> (Graz, Austria).  
+                        My name is Simon Ranftl and I am a Frontend Web Engineer at <a class="dark" rel="noopener noreferrer" href="https://www.netconomy.net/" target="_blank">Netconomy</a> (Graz, Austria).  
                         I hold a bachelor's degree in Education (BEd) for secondary schools in computer science and history. During my studies I discovered my passion for programming and as an 
                         evolving teacher with industry insights, I am enthusiastic about motivating students getting into IT and programming.
                     </p>
@@ -284,7 +300,7 @@
                 <div>
                     <p>
                         Additionally, I am a huge retro games fan! I grew up with my
-                        <a rel="noopener noreferrer" href="https://mranftl.com" target="_blank">brother's</a> SNES
+                        <a class="dark" rel="noopener noreferrer" href="https://mranftl.com" target="_blank">brother's</a> SNES
                         and fell in love with the Super Mario and Legend of Zelda
                         franchise. I still like playing some Super Mario World or A Link
                         to the Past even to this day. I guess that's also why I am so
@@ -396,7 +412,7 @@
                         </div>
                     </div>
 
-                    <div class="project" id="project-6">
+                    <div class="project" id="project-7">
                         <h4 class="padding-bottom-1">Meteor Defender</h4>
                         <p class="padding-bottom-1">
                             Meteor Defender is a small shoot 'em up game that was created with Unity. Try the <a rel="noopener noreferrer" href="https://ranftl.dev/meteor-game/" target="_blank">WebGL build (Desktop only, requires Mouse and Keyboard for controls)</a> or check the <a rel="noopener noreferrer" href="https://github.com/eder13/meteor-defender" target="_blank">source code on Github</a>.
@@ -507,7 +523,7 @@
 </div>
 <div class="footer-push"></div>
 <footer>
-    <a href="content/legal.html">LEGAL</a>
+    <a class="dark" href="content/legal.html">LEGAL</a>
     <div><p style="color: #fff">(c) Simon Ranftl</p></div>
 </footer>
 

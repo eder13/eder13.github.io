@@ -46,6 +46,9 @@
   --backdrop-filter: blur(1rem);
   --showcase-image: url('../img/Simon_Portrait_copyright_blaufuehlerfotografie_01_thumbnail.jpg'); }
 
+:focus {
+  outline: 3px dashed #ff974c; }
+
 * {
   margin: 0;
   padding: 0;
@@ -81,10 +84,33 @@ html {
 a {
   text-decoration: none;
   transition: background 0.2s ease-in;
-  color: lightseagreen;
+  color: #006666;
   cursor: pointer; }
   a:hover {
     color: #ff974c; }
+
+a.dark {
+  text-decoration: none;
+  transition: background 0.2s ease-in;
+  color: #33ffff;
+  cursor: pointer; }
+  a.dark:hover {
+    color: #ff974c; }
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+  display: inline !important;
+  color: white !important; }
 
 .btn-light, .btn-dark {
   padding: 1rem;
@@ -197,7 +223,7 @@ header .navbar .logo .hamburger {
   padding-top: 3rem; }
 
 .small-text-aligned-center {
-  color: #ff974c;
+  color: #006666;
   font-size: 0.8rem;
   text-align: center; }
 
@@ -503,9 +529,11 @@ main #projects {
           position: absolute;
           top: 4px;
           right: 1px;
-          color: lightseagreen;
+          color: #006666;
           font-size: 0.8rem;
           font-weight: bold; }
+      main #projects .outer-container .container #project-7 {
+        position: relative; }
       main #projects .outer-container .container .project {
         border: 1.5px dashed #222;
         padding: 1rem;
