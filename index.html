@@ -260,7 +260,7 @@
                             Hi! My name is Simon.
                         </h1>
                         <h3 class="typewriter">
-                            I am a Frontend Web Engineer.
+                            I am a TypeScript Engineer.
                         </h3>
                     </div>
                     <a title="Go To About Section" id="about-btn" class="down-arrow" href="#about" style="width: 50px;height: 50px;display: grid;place-items: center;border-radius: 50%;background-color: rgba(255, 255, 255, 0.8);box-shadow: 0 0 0.8rem 0.3rem rgba(253,242,232,.44313725490196076);">
@@ -292,9 +292,8 @@
                 </div>
                 <div>
                     <p>
-                        As of Web Development, I enjoy coding in JavaScript and making my own small web applications using React. I am also very
-                        interested in the Progressive Web Apps (PWAs) movement to create mobile applications using the web. 
-                        For implementing backend systems, I use Spring Boot and MySQL to build Fullstack applications for fun.
+                        As a hobbyist and as my Job I love coding and solving conceptual and architectural challenges. My language of choice is TypeScript which I use to 
+                        build all kind of programs. Additionally I try to stay ahead with the newest Frontend technology as well as AI.
                     </p>
                 </div>
                 <div>
@@ -302,9 +301,7 @@
                         Additionally, I am a huge retro games fan! I grew up with my
                         <a class="dark" rel="noopener noreferrer" href="https://mranftl.com" target="_blank">brother's</a> SNES
                         and fell in love with the Super Mario and Legend of Zelda
-                        franchise. I still like playing some Super Mario World or A Link
-                        to the Past even to this day. I guess that's also why I am so
-                        nostalgic about modern indie games.
+                        franchise. Furthermore I am a DJ and in love with electronic music genres like Tech House, Techno and Drum 'n Bass. I also play the drums <small>(poorly)</small>.
                     </p>
                 </div>
             </div>
@@ -363,6 +360,23 @@
 
             <div class="outer-container">
                 <div class="container">
+
+                    <div class="project" id="project-8">
+                        <h4 class="padding-bottom-1">Knockout Tournament Planer</h4>
+                        <p class="padding-bottom-1">
+                            <a target="_blank" href="https://tourname.uber.space/">Knockout Tournament Planer</a> is a small app that lets you generate single elimination knockout tournaments.
+                            It was created for learning purposes to get more familiar with hapi as well as prisma. For future projects, this stack will be used instead of Spring Boot since TypeScript 
+                            is my favorite language so far. You can get the source code on <a target="_blank" href="https://github.com/eder13/tournament-planer/tree/main">GitHub</a>.
+                        </p>
+                        
+                        <div style="display: flex; justify-content: center; align-items: center">
+                            <div style="width: 100%">
+                                <a rel="noopener noreferrer" href="https://tourname.uber.space/" target="_blank">
+                                    <img loading="lazy" width="1550" height="755" alt="ktp" src="./img/ktp.png" style="max-width: 100%; height: auto">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="project" id="project-6">
                         <h4 class="padding-bottom-1">Kürbishof Koller Website</h4>
@@ -483,9 +497,9 @@
                                     by <a rel="noopener noreferrer" target="_blank" href="https://eder13.itch.io">eder13</a> <br>
                                     <small>An introduction to game dev in JS.</small>
                                     <p class="padding-top-3">
-                                    <form action="content/snake_game/snake.html">
-                                        <input type="submit" class="button" value="Play the Game">
-                                    </form>
+                                        <form action="content/snake_game/snake.html">
+                                            <input type="submit" class="button" value="Play the Game">
+                                        </form>
                                     </p>
                                 </td>
                             </tr>
@@ -542,8 +556,8 @@
     const topMenu = $("#top-menu"),
         topMenuHeight = topMenu.outerHeight() + 400,
         // All list items
-        //menuItems = $("nav ul li a:not(:last)"); // last is blog on external site
-        menuItems = $("nav ul li a"); // last is blog on external site
+        menuItems = $("nav ul li a:not(:last)"); // last is blog on external site
+        //menuItems = $("nav ul li a"); // last is blog on external site
 
     // Anchors corresponding to menu items
     const scrollItems = menuItems.map(function () {

@@ -335,7 +335,7 @@ header .showcase-text .container {
     overflow: hidden;
     animation: type 3s steps(40, end), cursor 1.25s infinite step-end;
     margin: 0 auto;
-    max-width: 300px;
+    max-width: 270px;
     letter-spacing: 0.1rem;
     font-style: italic;
     font-weight: 400; }
@@ -351,7 +351,7 @@ header .showcase-text .container {
   from {
     width: 0; }
   to {
-    width: 300px; } }
+    width: 270px; } }
   header .showcase-text .container div h1 {
     font-size: 3rem;
     font-weight: 300; }
@@ -523,8 +523,21 @@ main #projects {
       main #projects .outer-container .container #project-5 {
         position: relative; }
       main #projects .outer-container .container #project-6 {
+        position: relative;
+        /* &::after {
+                        content: 'new';
+                        position: absolute;
+                        top: 4px;
+                        right: 1px;
+                        color: #006666;
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                    } */ }
+      main #projects .outer-container .container #project-7 {
         position: relative; }
-        main #projects .outer-container .container #project-6::after {
+      main #projects .outer-container .container #project-8 {
+        position: relative; }
+        main #projects .outer-container .container #project-8::after {
           content: 'new';
           position: absolute;
           top: 4px;
@@ -532,8 +545,6 @@ main #projects {
           color: #006666;
           font-size: 0.8rem;
           font-weight: bold; }
-      main #projects .outer-container .container #project-7 {
-        position: relative; }
       main #projects .outer-container .container .project {
         border: 1.5px dashed #222;
         padding: 1rem;
@@ -679,6 +690,11 @@ input[type='submit'].button-primary {
   input[type='checkbox'][id='toggler'],
   header .navbar .logo .hamburger {
     display: block; }
+  .reset-covid-symptom {
+    position: static !important;
+    color: red; }
+  .longcovid-hashtag {
+    margin-top: 2rem; }
   #main-header .navbar {
     display: flex;
     flex-flow: column nowrap;
