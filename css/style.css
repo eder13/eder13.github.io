@@ -398,110 +398,126 @@ main #projects {
   color: black; }
   main #projects h1 {
     font-size: 2rem; }
-  main #projects .tech-logos {
-    margin: 0 auto;
-    width: 300px;
-    display: flex;
-    justify-content: flex-start; }
-    main #projects .tech-logos {
-      transition: display 0.2s ease-in;
-      justify-content: space-between; }
-    main #projects .tech-logos .first {
-      position: relative; }
-      main #projects .tech-logos .first::after {
-        content: "HTML";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: -0.3rem; }
-    main #projects .tech-logos .second {
-      position: relative; }
-      main #projects .tech-logos .second::after {
-        content: "SCSS";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: 0.4rem; }
-    main #projects .tech-logos .third {
-      position: relative; }
-      main #projects .tech-logos .third::after {
-        content: "JS/TS";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem; }
-    main #projects .tech-logos .fourth {
-      position: relative; }
-      main #projects .tech-logos .fourth::after {
-        content: "React";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem; }
-    main #projects .tech-logos .fifth {
-      position: relative; }
-      main #projects .tech-logos .fifth::after {
-        content: "Spring";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem; }
-    main #projects .tech-logos .sixth {
-      position: relative; }
-      main #projects .tech-logos .sixth::after {
-        content: "MySQL";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: -0.2rem; }
-    main #projects .tech-logos .seventh {
-      position: relative; }
-      main #projects .tech-logos .seventh::after {
-        content: "PHP";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: 0.6rem; }
-    main #projects .tech-logos .eighth {
-      position: relative; }
-      main #projects .tech-logos .eighth::after {
-        content: "Unity";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: 0.3rem; }
-    main #projects .tech-logos .nineth {
-      position: relative; }
-      main #projects .tech-logos .nineth::after {
-        content: "Node";
-        font-weight: bold;
-        font-size: 0.7rem;
-        color: #222;
-        position: absolute;
-        bottom: -0.9rem;
-        left: 0.1rem;
-        left: 0.1rem; }
+  main #projects .container-tech-logos {
+    display: grid;
+    place-items: center; }
+    main #projects .container-tech-logos .tech-logos {
+      display: flex;
+      padding: 0 2.5rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1000px; }
+      main #projects .container-tech-logos .tech-logos {
+        transition: display 0.2s ease-in;
+        justify-content: space-around; }
+      main #projects .container-tech-logos .tech-logos .first {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .first::after {
+          content: "HTML";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: -0.3rem; }
+      main #projects .container-tech-logos .tech-logos .second {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .second::after {
+          content: "SCSS";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: 0.4rem; }
+      main #projects .container-tech-logos .tech-logos .third {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .third::after {
+          content: "JS/TS";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem; }
+      main #projects .container-tech-logos .tech-logos .fourth {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .fourth::after {
+          content: "React";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem; }
+      main #projects .container-tech-logos .tech-logos .fifth {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .fifth::after {
+          content: "Spring";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem; }
+      main #projects .container-tech-logos .tech-logos .sixth {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .sixth::after {
+          content: "MySQL";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: -0.2rem; }
+      main #projects .container-tech-logos .tech-logos .seventh {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .seventh::after {
+          content: "PHP";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: 0.6rem; }
+      main #projects .container-tech-logos .tech-logos .eighth {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .eighth::after {
+          content: "Unity";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: 0.3rem; }
+      main #projects .container-tech-logos .tech-logos .nineth {
+        position: relative; }
+        main #projects .container-tech-logos .tech-logos .nineth::after {
+          content: "Node";
+          font-weight: bold;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: -0.9rem;
+          left: 0.1rem;
+          left: 0.1rem; }
+      main #projects .container-tech-logos .tech-logos .tenth {
+        position: relative;
+        transform: rotate(-90deg); }
+        main #projects .container-tech-logos .tech-logos .tenth::after {
+          content: 'Astro';
+          font-weight: 700;
+          font-size: 0.7rem;
+          color: #222;
+          position: absolute;
+          bottom: 10px;
+          transform: rotate(90deg);
+          left: -22px; }
   main #projects .outer-container {
     margin-top: 4rem;
     margin-bottom: 1rem;
