@@ -1136,8 +1136,8 @@
             const topMenu = $('#top-menu'),
                 topMenuHeight = topMenu.outerHeight() + 400,
                 // All list items
-                menuItems = $('nav ul li a:not(:last)'); // last is blog on external site
-            //menuItems = $("nav ul li a"); // last is blog on external site
+                menuItems = $('nav ul li a');
+            //menuItems = $('nav ul li a:not(:last)'); // last is blog on external site
 
             // Anchors corresponding to menu items
             const scrollItems = menuItems.map(function () {
@@ -1151,6 +1151,8 @@
                     // catches '#' in href
                 }
             });
+
+            console.log('#####** scrollItems', scrollItems);
 
             // Bind to scroll
             $(window).scroll(function () {
