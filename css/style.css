@@ -335,7 +335,7 @@ header .showcase-text .container {
     overflow: hidden;
     animation: type 3s steps(40, end), cursor 1.25s infinite step-end;
     margin: 0 auto;
-    max-width: 270px;
+    max-width: 235px;
     letter-spacing: 0.1rem;
     font-style: italic;
     font-weight: 400; }
