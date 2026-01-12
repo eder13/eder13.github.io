@@ -561,6 +561,16 @@ main #projects {
           color: #006666;
           font-size: 0.8rem;
           font-weight: bold; }
+      main #projects .outer-container .container #project-9 {
+        position: relative; }
+        main #projects .outer-container .container #project-9::after {
+          content: 'new';
+          position: absolute;
+          top: 4px;
+          right: 1px;
+          color: #006666;
+          font-size: 0.8rem;
+          font-weight: bold; }
       main #projects .outer-container .container .project {
         border: 1.5px dashed #222;
         padding: 1rem;
