@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -273,7 +273,7 @@
                                     aria-hidden="true"
                                     class="active"
                                     href="#"
-                                    onclick="return false"
+                                    onclick="return false;"
                                     >.</a
                                 >
                             </li>
@@ -326,7 +326,7 @@
                                         nav.classList.remove('nav-show');
                                         nav.classList.add('nav-hide');
                                         navbar.classList.remove(
-                                            'navbar-fold-animation'
+                                            'navbar-fold-animation',
                                         );
                                         checkBox.checked = false;
                                     }
@@ -343,7 +343,7 @@
                 <script>
                     document.addEventListener(
                         'DOMContentLoaded',
-                        navbarEffects
+                        navbarEffects,
                     );
 
                     function navbarEffects() {
@@ -354,11 +354,11 @@
                         window.onscroll = function () {
                             if (window.pageYOffset > 10) {
                                 navbar.classList.add(
-                                    'navbar-change-background'
+                                    'navbar-change-background',
                                 );
                             } else {
                                 navbar.classList.remove(
-                                    'navbar-change-background'
+                                    'navbar-change-background',
                                 );
                             }
                         };
@@ -372,7 +372,7 @@
                     >
                         <img
                             loading="eager"
-                            fetchPriority="high"
+                            fetchpriority="high"
                             alt="showcase-img-thumbnail"
                             id="showcase-img"
                             style="
@@ -440,6 +440,11 @@
                 <section
                     id="about"
                     class="padding-bottom-3"
+                    style="
+                        min-height: 500px;
+                        display: grid;
+                        place-items: center;
+                    "
                 >
                     <div class="container margin-2x">
                         <div>
@@ -1044,7 +1049,8 @@
                                     style="
                                         background-color: #e7e7e7;
                                         color: black;
-                                        font-family: 'Lucida Sans',
+                                        font-family:
+                                            'Lucida Sans',
                                             'Lucida Sans Regular',
                                             'Lucida Grande',
                                             'Lucida Sans Unicode', Geneva,
@@ -1132,7 +1138,15 @@
                             <a
                                 class="contact-link"
                                 href="#"
-                                onclick="javascript:window.location='mailto:' + 'simon.ranftl82@gmail.com' + '?subject=Contact via ranftl.dev&body=Hi Simon 👋! I saw your Website ' + window.location + ' and wanted to ask...';return false;"
+                                onclick="
+                                    javascript: window.location =
+                                        'mailto:' +
+                                        'simon.ranftl82@gmail.com' +
+                                        '?subject=Contact via ranftl.dev&body=Hi Simon 👋! I saw your Website ' +
+                                        window.location +
+                                        ' and wanted to ask...';
+                                    return false;
+                                "
                             >
                                 <i class="fa fa-envelope fa-3x"></i>
                                 <div>E-Mail</div>
@@ -1257,24 +1271,24 @@
                         showCaseImageImgElement.addEventListener(
                             'load',
                             onImageLoaded,
-                            { once: true }
+                            { once: true },
                         );
                     }
 
                     function onImageLoaded() {
                         showCaseThumbnailImgElemnt.replaceWith(
-                            showCaseImageImgElement
+                            showCaseImageImgElement,
                         );
                         const showcaseImageWrapper = document.getElementById(
-                            'showcase-wrapper-img'
+                            'showcase-wrapper-img',
                         ).style;
                         showcaseImageWrapper.setProperty(
                             '--backdrop-filter',
-                            'blur(0)'
+                            'blur(0)',
                         );
                     }
                 },
-                { once: true }
+                { once: true },
             );
         </script>
     </body>
