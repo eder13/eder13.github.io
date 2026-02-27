@@ -1,0 +1,287 @@
+[
+    {
+        "path": "assets/sound",
+        "files": [
+            {
+                "type": "audio",
+                "key": "DUNGEON_MAIN_MUSIC",
+                "url": "main-music/dungeon/dungeon.wav",
+                "loop": true
+            },
+            {
+                "type": "audio",
+                "key": "BOSS_THEME",
+                "url": "main-music/boss/boss_theme.wav",
+                "loop": true
+            },
+            {
+                "type": "audio",
+                "key": "SFX_FOOT_STEPS",
+                "url": "effects/foot_steps.mp3"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_SWORD_ATTACK",
+                "url": "effects/sword_attack.wav",
+                "volume": 0.4
+            },
+            {
+                "type": "audio",
+                "key": "SFX_SAW_HIT_WALL",
+                "url": "effects/saw_wall_hit.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_ENEMY_HURT",
+                "url": "effects/hurt_enemy.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_ENEMY_DEAD",
+                "url": "effects/enemy_dead.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_ITEM_PICKUP",
+                "url": "effects/item_pickup.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_POT_BREAK",
+                "url": "effects/pot_break.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_PLAYER_HURT",
+                "url": "effects/hurt_player.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_TADA_CHEST",
+                "url": "effects/tada.mp3"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_DOOR_OPEN",
+                "url": "effects/door_opening.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_SECRET_UNVEILED",
+                "url": "effects/secret_unveiled.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_BUTTON_PRESSED",
+                "url": "effects/button.wav"
+            },
+            {
+                "type": "audio",
+                "key": "SFX_SPIKE_TRAP",
+                "url": "effects/spiketrap.wav"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/user_interface/Heartbars",
+        "files": [
+            {
+                "type": "spritesheet",
+                "key": "UI_HEARTBARS",
+                "url": "hearts.png",
+                "frameConfig": { "frameWidth": 32, "frameHeight": 32 }
+            }
+        ]
+    },
+    {
+        "path": "assets/images/ui",
+        "files": [
+            {
+                "type": "image",
+                "key": "UI_DIALOG",
+                "url": "dialog_ui.png"
+            },
+            {
+                "type": "image",
+                "key": "UI_CURSOR",
+                "url": "cursor_white.png"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/player",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "PLAYER",
+                "textureURL": "player.png",
+                "atlasURL": "player.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/player",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "PLAYER_DEATH",
+                "textureURL": "player_death.png",
+                "atlasURL": "player_death.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/player",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "PLAYER_ATTACK",
+                "textureURL": "player_attack.png",
+                "atlasURL": "player_attack.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/objects",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "FIRE",
+                "textureURL": "fire-sheet.png",
+                "atlasURL": "fire.json"
+            },
+            {
+                "type": "image",
+                "key": "FIRE_IDLE",
+                "url": "fire_idle.png"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/objects",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "SPIKE",
+                "textureURL": "Spike-Trap-sheet.png",
+                "atlasURL": "spike-trap.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/enemies",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "SAW",
+                "textureURL": "saw.png",
+                "atlasURL": "saw.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/enemies",
+        "files": [
+            {
+                "type": "image",
+                "key": "BOSS",
+                "url": "boss.png"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/enemies",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "SPIDER_RED",
+                "textureURL": "spider_red-sheet.png",
+                "atlasURL": "spider_red.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/items",
+        "files": [
+            {
+                "type": "image",
+                "key": "SMALL_KEY",
+                "url": "small_key.png"
+            },
+            {
+                "type": "image",
+                "key": "BOSS_KEY",
+                "url": "boss_key.png"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/enemies",
+        "files": [
+            {
+                "type": "aseprite",
+                "key": "BLOB",
+                "textureURL": "blob.png",
+                "atlasURL": "blob.json"
+            }
+        ]
+    },
+    {
+        "path": "assets/images/levels/common",
+        "files": [
+            {
+                "type": "image",
+                "key": "COLLISION",
+                "url": "collision.png"
+            },
+            {
+                "type": "atlas",
+                "key": "DUNGEON_OBJECTS",
+                "textureURL": "dungeon_objects.png",
+                "atlasURL": "dungeon_objects.json"
+            },
+            {
+                "type": "image",
+                "key": "POT",
+                "url": "pot.png"
+            },
+            {
+                "type": "spritesheet",
+                "key": "POT_BREAK",
+                "url": "pot_break.png",
+                "frameConfig": { "frameWidth": 32, "frameHeight": 32 }
+            }
+        ]
+    },
+    {
+        "path": "assets/images/enemies",
+        "files": [
+            {
+                "type": "spritesheet",
+                "key": "ENEMY_DEATH",
+                "url": "enemy_death.png",
+                "frameConfig": { "frameWidth": 16, "frameHeight": 16 }
+            }
+        ]
+    },
+    {
+        "path": "assets/images/levels/dungeon_1",
+        "files": [
+            {
+                "type": "image",
+                "key": "DUNGEON_1_BACKGROUND",
+                "url": "dungeon_1_background.png"
+            },
+            {
+                "type": "image",
+                "key": "DUNGEON_1_FOREGROUND",
+                "url": "dungeon_1_foreground.png"
+            },
+            {
+                "type": "tilemapTiledJSON",
+                "key": "DUNGEON_1_LEVEL",
+                "url": "dungeon_1.json"
+            }
+        ]
+    }
+]
