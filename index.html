@@ -233,7 +233,7 @@
                             id="top-menu"
                             class="margin-1x"
                         >
-                            <li>
+                            <li class="padding-bottom-1-mobile">
                                 <a
                                     id="ho"
                                     class="active"
@@ -277,33 +277,156 @@
                                     >.</a
                                 >
                             </li>
-                            <li>
+                            <li class="padding-bottom-1-mobile">
                                 <a
                                     id="ab"
                                     href="#about"
                                     >ABOUT</a
                                 >
                             </li>
-                            <li>
+                            <li class="padding-bottom-1-mobile">
                                 <a
                                     id="pro"
                                     href="#projects"
                                     >PROJECTS</a
                                 >
                             </li>
-                            <li>
+                            <li class="padding-bottom-1-mobile">
                                 <a
                                     id="co"
                                     href="#contact"
                                     >CONTACT</a
                                 >
                             </li>
-                            <!--<li>
-                        <a href="./content/blog.html" onclick="return false">BLOG</a>
-                    </li>-->
+                            <li><br /></li>
+                            <li>
+                                <button
+                                    id="theme-toggler"
+                                    style="
+                                        background: transparent;
+                                        outline: none;
+                                        border: none;
+                                        cursor: pointer;
+                                    "
+                                >
+                                    <i
+                                        style="color: white"
+                                        class="theme-toggler-moon fas fa-moon fa-2x"
+                                    ></i>
+                                    <i
+                                        style="color: white"
+                                        class="theme-toggler-sun fas fa-sun fa-2x"
+                                    ></i>
+                                </button>
+                            </li>
+                            <li><br /></li>
                         </ul>
                     </nav>
                 </section>
+                <!-- Theme Toggler -->
+                <script type="text/javascript">
+                    function setTheme(newTheme) {
+                        const themeTogglerBtn =
+                            document.getElementById('theme-toggler');
+                        const moonIcon = document.querySelector(
+                            '.theme-toggler-moon',
+                        );
+                        const sunIcon =
+                            document.querySelector('.theme-toggler-sun');
+
+                        if (newTheme) {
+                            changeSpecificTheme(newTheme);
+                        } else {
+                            changeTheme();
+                        }
+
+                        function changeSpecificTheme() {
+                            if (newTheme === 'light') {
+                                document.documentElement.setAttribute(
+                                    'data-theme',
+                                    'light',
+                                );
+                                sunIcon.style =
+                                    'color: white !important; display: none !important;';
+                                moonIcon.style =
+                                    'color: white !important; display: block !important;';
+
+                                localStorage.setItem('theme', 'light');
+                            }
+                            if (newTheme === 'dark') {
+                                document.documentElement.setAttribute(
+                                    'data-theme',
+                                    'dark',
+                                );
+                                sunIcon.style =
+                                    'color: white !important; display: block !important;';
+                                moonIcon.style =
+                                    'color: white !important; display: none !important;';
+
+                                localStorage.setItem('theme', 'dark');
+                            }
+                        }
+
+                        function changeTheme() {
+                            let activeChild = null;
+                            let inactiveElement = null;
+
+                            for (const child of themeTogglerBtn.children) {
+                                if (
+                                    getComputedStyle(child).display === 'block'
+                                ) {
+                                    activeChild = child;
+                                } else {
+                                    inactiveElement = child;
+                                }
+                            }
+
+                            if (!activeChild || !inactiveElement) {
+                                return;
+                            }
+
+                            activeChild.style =
+                                'color: white !important; display: none !important;';
+                            inactiveElement.style =
+                                'color: white !important; display: block !important;';
+
+                            const isSunActive =
+                                activeChild.className.includes('sun');
+
+                            if (isSunActive) {
+                                document.documentElement.setAttribute(
+                                    'data-theme',
+                                    'light',
+                                );
+
+                                localStorage.setItem('theme', 'light');
+                            } else {
+                                document.documentElement.setAttribute(
+                                    'data-theme',
+                                    'dark',
+                                );
+
+                                localStorage.setItem('theme', 'dark');
+                            }
+                        }
+                    }
+
+                    const themeSetting = localStorage.getItem('theme');
+                    if (themeSetting) {
+                        if (themeSetting === 'dark') {
+                            setTheme('dark');
+                        }
+                        if (themeSetting === 'light') {
+                            setTheme('light');
+                        }
+                    }
+
+                    document
+                        .getElementById('theme-toggler')
+                        .addEventListener('click', () => {
+                            setTheme();
+                        });
+                </script>
                 <!-- Hamburger Toggler -->
                 <script type="text/javascript">
                     function menuToggler() {
@@ -1089,6 +1212,7 @@
                                                 rel="noopener noreferrer"
                                                 target="_blank"
                                                 href="https://eder13.itch.io"
+                                                class="itch"
                                                 >eder13</a
                                             ><br />
                                             <small
@@ -1204,8 +1328,8 @@
             const topMenu = $('#top-menu'),
                 topMenuHeight = topMenu.outerHeight() + 400,
                 // All list items
-                menuItems = $('nav ul li a');
-            //menuItems = $('nav ul li a:not(:last)'); // last is blog on external site
+                //menuItems = $('nav ul li a');
+                menuItems = $('nav ul li *:not(:last)'); // last is theme toggler
 
             // Anchors corresponding to menu items
             const scrollItems = menuItems.map(function () {
