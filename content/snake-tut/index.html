@@ -7,6 +7,65 @@
     <link rel="stylesheet" type="text/css" href="./content/foundation.min.css">
     <link rel="stylesheet" type="text/css" href="./content/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./content/style.css">
+    <script>
+        const themeSetting = localStorage.getItem('theme');
+        if (themeSetting === 'dark' || (!themeSetting && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (themeSetting === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
+    <style>
+        html[data-theme='dark'] body {
+            background-color: #1a1a1a !important;
+            color: #eee !important;
+        }
+        html[data-theme='dark'] h1,
+        html[data-theme='dark'] h2,
+        html[data-theme='dark'] h3,
+        html[data-theme='dark'] h4,
+        html[data-theme='dark'] h5,
+        html[data-theme='dark'] h6,
+        html[data-theme='dark'] p,
+        html[data-theme='dark'] li,
+        html[data-theme='dark'] td,
+        html[data-theme='dark'] div {
+            color: #eee !important;
+        }
+        html[data-theme='dark'] h3 {
+            border-bottom: 1px solid #444 !important;
+        }
+        html[data-theme='dark'] pre {
+            background-color: #2d2d2d !important;
+            border: 1px solid #444 !important;
+            color: #eee !important;
+        }
+        html[data-theme='dark'] code {
+            color: #eee !important;
+            background-color: transparent !important;
+        }
+        html[data-theme='dark'] a {
+            color: #4da6ff !important;
+        }
+        html[data-theme='dark'] a:hover {
+            color: #80c1ff !important;
+        }
+        html[data-theme='dark'] hr {
+            border-top: 1px solid #444 !important;
+        }
+        html[data-theme='dark'] table {
+            background-color: #2d2d2d !important;
+            color: #eee !important;
+            border: 3px inset #444 !important;
+        }
+        html[data-theme='dark'] table td {
+            border-left: 1px inset #444 !important;
+        }
+        html[data-theme='dark'] footer {
+            border-top: 2px solid #444 !important;
+            color: #eee !important;
+        }
+    </style>
 </head>
 
 <body data-ng-controller="editorCtrl" class="ng-scope ng-pageslide-body-closed">
